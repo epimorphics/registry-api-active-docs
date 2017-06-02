@@ -1,0 +1,60 @@
+#%RAML 1.0
+title: environment-registry
+version: v1
+baseUri: http://environment-registry.epimorphics.net/registry/def/test-area
+mediaType:
+  - application/json
+protocols:
+  - http
+types:
+/:
+  get:
+    displayName: List the register
+    description: Returns the JSON description of the register that is used for testing and demos
+    queryParameters:
+      non-member-properties:
+        required: false
+        type: boolean
+        displayName: Return metadata only
+        description: Only return metadata for the register, without listing members
+      firstPage:
+        required: false
+        type: boolean
+        displayName: Return first page of results
+        description: Equivalent to _page=0
+      _page:
+        required: false
+        type: number
+        displayName: Page
+        description: Return the given page of results
+      status:
+        required: false
+        type: string
+        displayName: Status filter
+        description: Only return register items whose status matches the given value
+      _view:
+        required: false
+        type: string
+        displayName: View of the data
+        description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
+      versionAt:
+        required: false
+        type: datetime-only
+        displayName: Version at
+        description: Specifies the version of the register that was in effect at the given XSD DateTime
+    responses:
+      200:
+        body:
+          application/json:
+
+  post:
+    displayName: Add to the register
+    description: Register a new item in the register
+/:{version}:
+  get:
+    displayName: List a specific version of the register
+    description: Returns a JSON description of the identified version of the register
+    responses:
+      200:
+        body:
+          application/json:
