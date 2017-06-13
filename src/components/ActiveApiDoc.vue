@@ -10,6 +10,14 @@
 </template>
 
 <script>
+  import RegistryApi from '@/models/registry-api';
+
+  export default {
+    data: () => ({ api: new RegistryApi() }),
+    computed: {
+      resources: this.api.resources(),
+    },
+  };
 </script>
 
 <style>
