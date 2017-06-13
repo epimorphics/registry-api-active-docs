@@ -7,6 +7,7 @@ const raml = `#%RAML 1.0
 title: test-registry
 baseUri: http://localhost:8080/test
 /:
+  displayName: 'Root register'
   get:
     displayName: List the register
     description: Returns the JSON description of the register that is used for testing and demos
@@ -23,6 +24,7 @@ describe('RegistryApi', () => {
         const rApi = new RegistryApi(ramlDoc);
         const resources = rApi.resources();
         expect(resources).to.have.lengthOf(2);
+        expect(resources[0].displayName()).to.equal('Root register');
         done();
       })
       .catch((error) => {
