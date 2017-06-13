@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span='6' class='o-index-container'>
-      <div class='grid-content'>index will go here</div>
+      <active-api-index v-bind:resources='resources'></active-api-index>
     </el-col>
     <el-col :span='18' class='o-api-description-container'>
       Details will go here
@@ -10,12 +10,22 @@
 </template>
 
 <script>
-  import RegistryApi from '@/models/registry-api';
+  import ApiModelLoader from '@/services/api-model-loader';
+  import ActiveApiIndex from '@/components/ActiveApiIndex';
 
   export default {
-    data: () => ({ api: new RegistryApi() }),
+    data: () => ({ api: ApiModelLoader.load() }),
     computed: {
-      resources: this.api.resources(),
+      resources: () => {
+        console.log('computing property resources');
+        return this.api ? this.api.resources() : [];
+      },
+    },
+    components: {
+      'active-api-index': ActiveApiIndex,
+    },
+    mounted: () => {
+      console.log('ActiveApiDoc mounted');
     },
   };
 </script>
