@@ -23,7 +23,7 @@ describe('RegistryApi', () => {
         const rApi = new RegistryApi(ramlDoc.toJSON());
         const resources = rApi.resources();
         expect(resources).to.have.lengthOf(2);
-        expect(resources[0].displayName).to.equal('Root register');
+        expect(resources[0].displayName()).to.equal('Root register');
         done();
       })
       .catch((error) => {
