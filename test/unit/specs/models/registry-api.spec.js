@@ -2,7 +2,6 @@ import RegistryApi from '@/models/registry-api';
 import Raml from 'raml-1-parser-browser';
 import { assert } from 'chai';
 
-// const api = Raml.loadRAML('http://localhost:8080/static/api.raml');
 const raml = `#%RAML 1.0
 title: test-registry
 baseUri: http://localhost:8080/test
@@ -21,10 +20,10 @@ describe('RegistryApi', () => {
   describe('#resources()', () => {
     it('should return an array of Resources', (done) => {
       fetch.then((ramlDoc) => {
-        const rApi = new RegistryApi(ramlDoc);
+        const rApi = new RegistryApi(ramlDoc.toJSON());
         const resources = rApi.resources();
         expect(resources).to.have.lengthOf(2);
-        expect(resources[0].displayName()).to.equal('Root register');
+        expect(resources[0].displayName).to.equal('Root register');
         done();
       })
       .catch((error) => {

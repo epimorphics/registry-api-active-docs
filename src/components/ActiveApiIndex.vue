@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li v-for="resource in resources">
-      {{ resource.displayName() }}
+      {{ resource }}
     </li>
   </ul>
 </template>

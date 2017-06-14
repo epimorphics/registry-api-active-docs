@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span='6' class='o-index-container'>
-      <active-api-index v-bind:resources='resources'></active-api-index>
+      <active-api-index v-bind:resources='endpoints'></active-api-index>
     </el-col>
     <el-col :span='18' class='o-api-description-container'>
       Details will go here
@@ -14,18 +14,23 @@
   import ActiveApiIndex from '@/components/ActiveApiIndex';
 
   export default {
-    data: () => ({ api: ApiModelLoader.load() }),
-    computed: {
-      resources: () => {
-        console.log('computing property resources');
-        return this.api ? this.api.resources() : [];
-      },
+    data: () => {     // eslint-disable-line
+      return { api: {} };
     },
     components: {
       'active-api-index': ActiveApiIndex,
     },
-    mounted: () => {
-      console.log('ActiveApiDoc mounted');
+    computed: {
+      endpoints() {
+        return this.api.resources ? this.api.resources() : [];
+      },
+    },
+    mounted() {
+      ApiModelLoader
+        .load()
+        .then((api) => {
+          this.api = api;
+        });
     },
   };
 </script>
