@@ -10,4 +10,10 @@ describe('ApiMethod', () => {
       expect(meth.displayName()).to.equal('List the register');
     });
   });
+
+  describe('#action()', () => {
+    it('should return the HTTP action of the method', () => {
+      expect(meth.action()).to.equal('get');
+    });
+  });
 });
