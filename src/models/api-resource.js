@@ -1,6 +1,8 @@
 /**
  * Value object wrapping an instance of a RAML resource
  */
+import _ from 'lodash';
+import ApiMethod from './api-method';
 
 export default class ApiResource {
   constructor(json) {
@@ -20,5 +22,10 @@ export default class ApiResource {
   /** @return The relative URI of the resource */
   relativeURI() {
     return this.json.relativeUri;
+  }
+
+  /** @return The methods that this resource defines */
+  methods() {
+    return _.map(this.json.methods || [], m => new ApiMethod(m));
   }
 }
