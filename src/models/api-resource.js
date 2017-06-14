@@ -11,4 +11,14 @@ export default class ApiResource {
   displayName() {
     return this.json.displayName;
   }
+
+  /** @return The absolute URI of the resource */
+  absoluteURI() {
+    return this.json.absoluteUri;
+  }
+
+  /** @return The relative URI of the resource */
+  relativeURI() {
+    return this.json.relativeUri;
+  }
 }
