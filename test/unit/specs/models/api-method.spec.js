@@ -16,4 +16,16 @@ describe('ApiMethod', () => {
       expect(meth.action()).to.equal('get');
     });
   });
+
+  describe('#key()', () => {
+    it('should return a key that uniquely identifies this action', () => {
+      expect(meth.key()).to.equal('get-/');
+    });
+  });
+
+  describe('#resource()', () => {
+    it('should return the resource that this action is part of', () => {
+      expect(meth.resource().displayName()).to.equal('/');
+    });
+  });
 });

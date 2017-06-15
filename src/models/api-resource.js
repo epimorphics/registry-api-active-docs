@@ -24,8 +24,13 @@ export default class ApiResource {
     return this.json.relativeUri;
   }
 
+  /** @return A key for this resource, which we interpret as the relative URI */
+  key() {
+    return this.relativeURI();
+  }
+
   /** @return The methods that this resource defines */
   methods() {
-    return _.map(this.json.methods || [], m => new ApiMethod(m));
+    return _.map(this.json.methods || [], m => new ApiMethod(m, this));
   }
 }

@@ -3,8 +3,9 @@
  */
 
 export default class ApiMethod {
-  constructor(json) {
+  constructor(json, resource) {
     this.json = json;
+    this.parent = resource;
   }
 
   /** @return The display name of the method */
@@ -15,5 +16,15 @@ export default class ApiMethod {
   /** @return The HTTP action of the method */
   action() {
     return this.json.method;
+  }
+
+  /** @return The resource that this method is part of */
+  resource() {
+    return this.parent;
+  }
+
+  /** @return A key which uniquely identifies this method */
+  key() {
+    return `${this.action()}-${this.resource().key()}`;
   }
 }
