@@ -19,7 +19,8 @@
     "raml-1-parser-browser": "^1.1.23",
     "typescript": "^2.3.4",
     "vue": "^2.3.3",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
