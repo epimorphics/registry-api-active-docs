@@ -12,24 +12,23 @@
 <script>
   import ApiModelLoader from '@/services/api-model-loader';
   import ActiveApiIndex from '@/components/ActiveApiIndex';
+  import { LOAD_API_MODEL } from '@/store/mutation-types';
 
   export default {
-    data: () => {     // eslint-disable-line
-      return { api: {} };
-    },
     components: {
       'active-api-index': ActiveApiIndex,
     },
     computed: {
       endpoints() {
-        return this.api.resources ? this.api.resources() : [];
+        const api = this.$store.state.apiModel;
+        return api.resources ? api.resources() : [];
       },
     },
     mounted() {
       ApiModelLoader
         .load()
         .then((api) => {
-          this.api = api;
+          this.$store.commit(LOAD_API_MODEL, api);
         });
     },
   };

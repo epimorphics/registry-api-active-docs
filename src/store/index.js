@@ -25,8 +25,8 @@ export default new Vuex.Store({
   strict: debug,
   state: {
     apiModel: {},
-    currentOperationKey: null,
-    currentResourceKey: null,
+    currentOperation: null,
+    currentResource: null,
   },
   mutations,
 });
