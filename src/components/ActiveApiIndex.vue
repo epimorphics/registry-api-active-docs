@@ -3,12 +3,7 @@
     <li v-for="resource in resources">
       <ul>
         <li v-for="method in resource.methods()" class='c-api-method'>
-          <button class='c-api-method--name'>
-            {{ method.displayName() }}
-          </button>
-          <span class='c-api-method-action'>
-            {{ method.action() }}
-          </span>
+          <active-api-index-entry v-bind:operation='method'> </active-api-index-entry>
         </li>
       </ul>
     </li>
@@ -16,10 +11,12 @@
 </template>
 
 <script>
+  import ActiveApiIndexEntry from './ActiveApiIndexEntry';
+
   export default {
     props: ['resources'],
-    mounted: () => {
-      console.log('ActiveApiIndex mounted');
+    components: {
+      'active-api-index-entry': ActiveApiIndexEntry,
     },
   };
 </script>
