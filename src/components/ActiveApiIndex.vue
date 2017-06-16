@@ -1,12 +1,10 @@
 <template>
   <ul>
-    <li v-for="resource in resources">
-      <ul>
-        <li v-for="method in resource.methods()" class='c-api-method'>
-          <active-api-index-entry v-bind:operation='method'> </active-api-index-entry>
-        </li>
-      </ul>
-    </li>
+    <template v-for="resource in resources">
+      <li v-for="method in resource.methods()" class='c-api-method'>
+        <active-api-index-entry v-bind:operation='method'> </active-api-index-entry>
+      </li>
+    </template>
   </ul>
 </template>
 

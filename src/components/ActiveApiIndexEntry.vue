@@ -1,5 +1,5 @@
 <template>
-  <div class='c-api-index-entry'>
+  <div class='c-api-index-entry' v-bind:class='{ "u-is-selected": isSelected }'>
     <button class='c-api-operation--name' v-on:click='select'>
       {{ operation.displayName() }}
     </button>
@@ -13,6 +13,12 @@
   import { SELECT_OPERATION } from '@/store/mutation-types';
 
   export default {
+    computed: {
+      isSelected() {
+        const op = this.$store.state.currentOperation;
+        return op && (op.key() === this.operation.key());
+      },
+    },
     props: ['operation'],
     methods: {
       /** User has clicked the button to select this operation */
@@ -24,4 +30,7 @@
 </script>
 
 <style>
+  .u-is-selected {
+    background-color: #c0d0c0;
+  }
 </style>
