@@ -8,8 +8,14 @@ import App from './App';
 import router from './router';
 import store from './store/index';
 
+import OptionsSwitchCompact from './components/OptionsSwitchCompact';
+
+// plugins
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+
+// global components
+Vue.component('options-switch-compact', OptionsSwitchCompact);
 
 /* eslint-disable no-new */
 new Vue({

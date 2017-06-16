@@ -5,6 +5,12 @@
     </h2>
     <div class='c-api-op-description--endpoint'>
       {{ operation.resource().relativeURI() }}
+      <options-switch-compact
+        v-bind:options='["get","post","put","patch","delete","head"]'
+        v-bind:readOnly='true'
+        v-bind:initialValue='operation.action()'
+        >
+      </options-switch-compact>
     </div>
     <p>
       {{ operation.description() }}
