@@ -28,4 +28,10 @@ describe('ApiMethod', () => {
       expect(meth.resource().displayName()).to.equal('/');
     });
   });
+
+  describe('#description()', () => {
+    it('should return the description of this operation', () => {
+      expect(meth.description()).to.equal('Returns the JSON description of the register that is used for testing and demos');
+    });
+  });
 });

@@ -27,4 +27,9 @@ export default class ApiMethod {
   key() {
     return `${this.action()}-${this.resource().key()}`;
   }
+
+  /** @return The description of the operation */
+  description() {
+    return this.json.description;
+  }
 }
