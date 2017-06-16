@@ -1,5 +1,5 @@
 <template>
-  <div class='c-api-index-entry' v-bind:class='{ "u-is-selected": isSelected }'>
+  <div class='c-api-index-entry' v-bind:class='{ "u-selected": isSelected }'>
     <button class='c-api-operation--name' v-on:click='select'>
       {{ operation.displayName() }}
     </button>
@@ -30,7 +30,7 @@
 </script>
 
 <style>
-  .u-is-selected {
+  .u-selected {
     background-color: #c0d0c0;
   }
 </style>
