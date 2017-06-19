@@ -30,16 +30,32 @@ types:
       status:
         required: false
         type: string
+        enum:
+          - any
+          - accepted
         displayName: Status filter
         description: Only return register items whose status matches the given value
       _view:
         required: false
         type: string
+        enum:
+          - with_metadata
+          - version_list
         displayName: View of the data
         description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
       versionAt:
         required: false
         type: datetime-only
+        displayName: Version at
+        description: Specifies the version of the register that was in effect at the given XSD DateTime
+      _format:
+        required: false
+        type: string
+        enum:
+          - csv
+          - json
+          - ttl
+          - rdf
         displayName: Version at
         description: Specifies the version of the register that was in effect at the given XSD DateTime
     responses:
