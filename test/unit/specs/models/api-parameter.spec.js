@@ -40,7 +40,7 @@ describe('ApiParameter', () => {
 
   describe('#enumValues', () => {
     it('should return the enumeration of values', () => {
-      expect(meth.apiParameters()[3].enumValues()).to.deep.equal(['any', 'accepted'])
+      expect(meth.apiParameters()[3].enumValues()).to.deep.equal(['any', 'accepted']);
     });
   });
 });

@@ -1,13 +1,13 @@
 <template>
   <div class="c-api-parameter">
     <template v-if="componentType === 'string'">
-      A string component named {{ apiParam.displayName() }}
+      <api-param-string v-bind:apiParam='apiParam'></api-param-string>
     </template>
     <template v-else-if="componentType === 'boolean'">
-      A boolean component named {{ apiParam.displayName() }}
+      <api-param-boolean v-bind:apiParam='apiParam'></api-param-boolean>
     </template>
     <template v-else-if="componentType === 'enum'">
-      An enum component named {{ apiParam.displayName() }}
+      <api-param-enum v-bind:apiParam='apiParam'></api-param-enum>
     </template>
     <template v-else-if="componentType === 'number'">
       A number component named {{ apiParam.displayName() }}
@@ -25,6 +25,10 @@
 </template>
 
 <script>
+  import ApiParamBoolean from './parameter/ApiParamBoolean';
+  import ApiParamEnum from './parameter/ApiParamEnum';
+  import ApiParamString from './parameter/ApiParamString';
+
   export default {
     props: [
       'apiParam',
@@ -33,6 +37,11 @@
       componentType() {
         return this.apiParam.componentType();
       },
+    },
+    components: {
+      'api-param-boolean': ApiParamBoolean,
+      'api-param-enum': ApiParamEnum,
+      'api-param-string': ApiParamString,
     },
   };
 </script>
