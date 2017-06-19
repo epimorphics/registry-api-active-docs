@@ -29,4 +29,9 @@ export default class ApiParameter {
 
     return tResult;
   }
+
+  /** @return The enumeration of values for this parameter, or null */
+  enumValues() {
+    return this.json.enum || null;
+  }
 }
