@@ -15,6 +15,12 @@
     <p>
       {{ operation.description() }}
     </p>
+    <h3>API parameters</h3>
+    <ul v-for='apiParam in operation.apiParameters()'>
+      <li>
+        <api-parameter v-bind:apiParam='apiParam'></api-parameter>
+      </li>
+    </ul>
   </section>
   <section class='c-api-operation-description no-selection' v-else>
     <p>Please choose an API operation</p>
@@ -22,11 +28,16 @@
 </template>
 
 <script>
+  import ApiParameter from './ApiParameter';
+  
   export default {
     computed: {
       operation() {
         return this.$store.state.currentOperation;
       },
+    },
+    components: {
+      'api-parameter': ApiParameter,
     },
   };
 </script>

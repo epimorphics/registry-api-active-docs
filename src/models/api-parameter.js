@@ -17,13 +17,16 @@ export default class ApiParameter {
   componentType() {
     let t = this.json.type;
     t = _.isArray(t) ? _.first(t) : t;
+    let tResult = t;
 
-    if (t.enum) {
-      return 'enum';
+    if (t === 'string' && this.json.enum) {
+      tResult = 'enum';
     } else if (t === 'datetime-only') {
-      return 'datetime';
+      tResult = 'datetime';
+    } else if (t === 'date-only') {
+      tResult = 'date';
     }
 
-    return t;
+    return tResult;
   }
 }

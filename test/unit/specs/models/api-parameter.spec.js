@@ -16,15 +16,25 @@ describe('ApiParameter', () => {
   describe('#componentType()', () => {
     it('should return the type of component to use', () => {
       const compTypes = _.map(meth.apiParameters(), apiParam => apiParam.componentType());
-      expect(compTypes).to.deep.equal([
+      const expectedTypes = [
         'boolean',
         'boolean',
         'number',
-        'string',
-        'string',
+        'enum',
+        'enum',
         'datetime',
         'enum',
-      ]);
+        'string',
+        'string',
+        'date',
+        'date',
+        'date',
+        'date',
+      ];
+
+      _.each(compTypes, (t, i) => {
+        expect(t, `compTypes[${i}]`).to.equal(expectedTypes[i]);
+      });
     });
   });
 });
