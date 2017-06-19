@@ -9,7 +9,10 @@ import RegistryApi from '@/models/registry-api';
 const load = () =>
   Raml
     .loadRAML('http://localhost:8080/static/api.raml')
-    .then(raml => new RegistryApi(raml.toJSON()));
+    .then((raml) => {
+      console.log(raml.toJSON());
+      return new RegistryApi(raml.toJSON());
+    });
 
 export default {
   load,

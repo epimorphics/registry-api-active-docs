@@ -1,5 +1,6 @@
 /* eslint-disable */
-const API_FIXTURE = {
+const API_FIXTURE =
+{
   "title": "environment-registry",
   "version": "v1",
   "baseUri": "http://environment-registry.epimorphics.net/registry/def/test-area",
@@ -50,7 +51,11 @@ const API_FIXTURE = {
                 "string"
               ],
               "required": false,
-              "description": "Only return register items whose status matches the given value"
+              "description": "Only return register items whose status matches the given value",
+              "enum": [
+                "any",
+                "accepted"
+              ]
             },
             "_view": {
               "name": "_view",
@@ -60,7 +65,11 @@ const API_FIXTURE = {
                 "string"
               ],
               "required": false,
-              "description": "Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'"
+              "description": "Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'",
+              "enum": [
+                "with_metadata",
+                "version_list"
+              ]
             },
             "versionAt": {
               "name": "versionAt",
@@ -75,34 +84,78 @@ const API_FIXTURE = {
             "_format": {
               "name": "_format",
               "displayName": "Version at",
-              "typePropertyKind": "INPLACE",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": [
+                "string"
+              ],
               "required": false,
               "description": "Specifies the version of the register that was in effect at the given XSD DateTime",
-              "type": {
-                "name": "type",
-                "displayName": "type",
-                "typePropertyKind": "TYPE_EXPRESSION",
-                "type": [
-                  "string"
-                ],
-                "enum": [
-                  "csv",
-                  "json",
-                  "ttl",
-                  "rdf",
-                  "minecraft"
-                ],
-                "__METADATA__": {
-                  "primitiveValuesMeta": {
-                    "displayName": {
-                      "calculated": true
-                    },
-                    "type": {
-                      "insertedAsDefault": true
-                    }
-                  }
-                }
-              }
+              "enum": [
+                "csv",
+                "json",
+                "ttl",
+                "rdf"
+              ]
+            },
+            "std:code": {
+              "name": "std:code",
+              "displayName": "Filter by registry entry code",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": [
+                "string"
+              ],
+              "required": false,
+              "description": "Only return those entries matching the given entry code"
+            },
+            "std:status": {
+              "name": "std:status",
+              "displayName": "Filter by registry entry status code",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": [
+                "string"
+              ],
+              "required": false,
+              "description": "Only return those entries that have the given status code"
+            },
+            "min-std:dateFrom": {
+              "name": "min-std:dateFrom",
+              "displayName": "Filter by earliest date-from",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": [
+                "date-only"
+              ],
+              "required": false,
+              "description": "Only return those entries whose valid-from date is after the given date"
+            },
+            "max-std:dateFrom": {
+              "name": "max-std:dateFrom",
+              "displayName": "Filter by latest date-from",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": [
+                "date-only"
+              ],
+              "required": false,
+              "description": "Only return those entries whose valid-from date is before the given date"
+            },
+            "min-std:dateTo": {
+              "name": "min-std:dateTo",
+              "displayName": "Filter by earliest date-to",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": [
+                "date-only"
+              ],
+              "required": false,
+              "description": "Only return those entries whose valid-to date is after the given date"
+            },
+            "max-std:dateTo": {
+              "name": "max-std:dateTo",
+              "displayName": "Filter by latest date-to",
+              "typePropertyKind": "TYPE_EXPRESSION",
+              "type": [
+                "date-only"
+              ],
+              "required": false,
+              "description": "Only return those entries whose valid-to date is before the given date"
             }
           },
           "responses": {

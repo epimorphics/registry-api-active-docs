@@ -58,6 +58,36 @@ types:
           - rdf
         displayName: Version at
         description: Specifies the version of the register that was in effect at the given XSD DateTime
+      std:code:
+        type: string
+        required: false
+        displayName: Filter by registry entry code
+        description: Only return those entries matching the given entry code
+      std:status:
+        type: string
+        required: false
+        displayName: Filter by registry entry status code
+        description: Only return those entries that have the given status code
+      min-std:dateFrom:
+        type: date-only
+        required: false
+        displayName: Filter by earliest date-from
+        description: Only return those entries whose valid-from date is after the given date
+      max-std:dateFrom:
+        type: date-only
+        required: false
+        displayName: Filter by latest date-from
+        description: Only return those entries whose valid-from date is before the given date
+      min-std:dateTo:
+        type: date-only
+        required: false
+        displayName: Filter by earliest date-to
+        description: Only return those entries whose valid-to date is after the given date
+      max-std:dateTo:
+        type: date-only
+        required: false
+        displayName: Filter by latest date-to
+        description: Only return those entries whose valid-to date is before the given date
     responses:
       200:
         body:
