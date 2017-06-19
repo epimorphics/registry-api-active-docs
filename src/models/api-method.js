@@ -1,6 +1,8 @@
 /**
  * Value object encapsulating an API method
  */
+import _ from 'lodash';
+import ApiParameter from './api-parameter';
 
 export default class ApiMethod {
   constructor(json, resource) {
@@ -31,5 +33,13 @@ export default class ApiMethod {
   /** @return The description of the operation */
   description() {
     return this.json.description;
+  }
+
+  /** @return The API parameters for this method */
+  apiParameters() {
+    if (!this.params) {
+      this.params = _.map(this.json.queryParameters || [], json => new ApiParameter(json));
+    }
+    return this.params;
   }
 }

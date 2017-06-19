@@ -34,4 +34,11 @@ describe('ApiMethod', () => {
       expect(meth.description()).to.equal('Returns the JSON description of the register that is used for testing and demos');
     });
   });
+
+  describe('#apiParameters()', () => {
+    it('should return an array of the API parameters for the operation', () => {
+      const params = meth.apiParameters();
+      expect(params).to.not.be.empty; //eslint-disable-line
+    });
+  });
 });

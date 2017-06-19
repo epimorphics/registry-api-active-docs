@@ -1,5 +1,14 @@
 /* eslint-disable */
-const FIXTURE =     {
+const API_FIXTURE = {
+  "title": "environment-registry",
+  "version": "v1",
+  "baseUri": "http://environment-registry.epimorphics.net/registry/def/test-area",
+  "protocols": [
+    "http"
+  ],
+  "mediaType": "application/json",
+  "resources": [
+    {
       "methods": [
         {
           "queryParameters": {
@@ -162,6 +171,90 @@ const FIXTURE =     {
       },
       "relativeUriPathSegments": [],
       "absoluteUri": "http://environment-registry.epimorphics.net/registry/def/test-area/"
-    };
+    },
+    {
+      "methods": [
+        {
+          "responses": {
+            "200": {
+              "code": "200",
+              "body": {
+                "application/json": {
+                  "name": "application/json",
+                  "displayName": "application/json",
+                  "typePropertyKind": "TYPE_EXPRESSION",
+                  "type": [
+                    "object"
+                  ],
+                  "__METADATA__": {
+                    "primitiveValuesMeta": {
+                      "displayName": {
+                        "calculated": true
+                      },
+                      "type": {
+                        "insertedAsDefault": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "protocols": [
+            "HTTP"
+          ],
+          "description": "Returns a JSON description of the identified version of the register",
+          "displayName": "List a specific version of the register",
+          "method": "get",
+          "__METADATA__": {
+            "primitiveValuesMeta": {
+              "protocols": {
+                "calculated": true
+              }
+            }
+          }
+        }
+      ],
+      "uriParameters": {
+        "version": {
+          "name": "version",
+          "displayName": "version",
+          "typePropertyKind": "TYPE_EXPRESSION",
+          "type": [
+            "string"
+          ],
+          "required": true,
+          "__METADATA__": {
+            "calculated": true,
+            "primitiveValuesMeta": {
+              "displayName": {
+                "calculated": true
+              },
+              "type": {
+                "insertedAsDefault": true
+              },
+              "required": {
+                "insertedAsDefault": true
+              }
+            }
+          }
+        }
+      },
+      "relativeUri": "/:{version}",
+      "displayName": "/:{version}",
+      "__METADATA__": {
+        "primitiveValuesMeta": {
+          "displayName": {
+            "calculated": true
+          }
+        }
+      },
+      "relativeUriPathSegments": [
+        ":{version}"
+      ],
+      "absoluteUri": "http://environment-registry.epimorphics.net/registry/def/test-area/:{version}"
+    }
+  ]
+};
 
-export default FIXTURE;
+export default {API_FIXTURE};
