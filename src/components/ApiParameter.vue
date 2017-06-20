@@ -10,13 +10,13 @@
       <api-param-enum v-bind:apiParam='apiParam'></api-param-enum>
     </template>
     <template v-else-if="componentType === 'number'">
-      A number component named {{ apiParam.displayName() }}
+      <api-param-number v-bind:apiParam='apiParam'></api-param-number>
     </template>
     <template v-else-if="componentType === 'datetime'">
-      A datetime component named {{ apiParam.displayName() }}
+      <api-param-date-time v-bind:apiParam='apiParam'></api-param-date-time>
     </template>
     <template v-else-if="componentType === 'date'">
-      A date component named {{ apiParam.displayName() }}
+      <api-param-date v-bind:apiParam='apiParam'></api-param-date>
     </template>
     <template v-else>
       {{ apiParam.displayName() }} -- {{ apiParam.componentType() }}
@@ -28,6 +28,9 @@
   import ApiParamBoolean from './parameter/ApiParamBoolean';
   import ApiParamEnum from './parameter/ApiParamEnum';
   import ApiParamString from './parameter/ApiParamString';
+  import ApiParamNumber from './parameter/ApiParamNumber';
+  import ApiParamDate from './parameter/ApiParamDate';
+  import ApiParamDateTime from './parameter/ApiParamDateTime';
 
   export default {
     props: [
@@ -42,6 +45,9 @@
       'api-param-boolean': ApiParamBoolean,
       'api-param-enum': ApiParamEnum,
       'api-param-string': ApiParamString,
+      'api-param-number': ApiParamNumber,
+      'api-param-date': ApiParamDate,
+      'api-param-date-time': ApiParamDateTime,
     },
   };
 </script>
