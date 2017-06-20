@@ -7,6 +7,7 @@ const {
   SET_API_RELATIVE_URI,
   SELECT_API_PARAM,
   UNSELECT_API_PARAM,
+  CLEAR_API_PARAMS,
 } = mutations;
 
 describe('mutations', () => {
@@ -53,6 +54,13 @@ describe('mutations', () => {
   it('should remove an API parameter on request', () => {
     const mockState = { queryParams: [{ foo: 'bar' }] };
     UNSELECT_API_PARAM(mockState, 'foo', 'bar');
+
+    expect(mockState.queryParams).to.have.length(0);
+  });
+
+  it('should remove all current API params on request', () => {
+    const mockState = { queryParams: [{ foo: 'bar' }, { p: 'q' }, { life: 42 }] };
+    CLEAR_API_PARAMS(mockState);
 
     expect(mockState.queryParams).to.have.length(0);
   });

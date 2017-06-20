@@ -36,6 +36,10 @@ export const mutations = {
   [types.UNSELECT_API_PARAM](state, paramName, paramValue) {
     _.remove(state.queryParams, { [paramName]: paramValue });
   },
+  /** Remove all API query parameters */
+  [types.CLEAR_API_PARAMS](state) {
+    state.queryParams.splice(0, state.queryParams.length);
+  },
 };
 
 function asUrlParam(obj) {
