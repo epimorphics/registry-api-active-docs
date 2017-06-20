@@ -1,7 +1,7 @@
 <template>
   <div class='c-api-param c-api-param--date'>
     <el-checkbox v-model='checked'>{{ apiParam.displayName() }}</el-checkbox>
-    <el-date-picker v-model='value' type='date'></el-date-picker>
+    <el-date-picker v-model='value' type='date' size='small' v-bind:disabled='!checked'></el-date-picker>
   </div>
 </template>
 

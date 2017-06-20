@@ -1,7 +1,7 @@
 <template>
-  <div class="c-api-param c-api-param--string">
-    <el-checkbox v-model="checked">{{ apiParam.displayName() }}</el-checkbox>
-    <el-input v-model="value"></el-input>
+  <div class='c-api-param c-api-param--string'>
+    <el-checkbox v-model='checked'>{{ apiParam.displayName() }}</el-checkbox>
+    <el-input v-model='value' size='small' v-bind:disabled='!checked'></el-input>
   </div>
 </template>
 
