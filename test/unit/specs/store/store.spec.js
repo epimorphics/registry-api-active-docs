@@ -1,25 +1,35 @@
-import { mutations } from '@/store/index';
-
-const { LOAD_API_MODEL, SELECT_OPERATION } = mutations;
+import { getters } from '@/store/index';
 
 describe('store', () => {
-  describe('#mutations', () => {
-    it('should update the store with a new model', () => {
-      const mockState = { apiModel: {} };
-      LOAD_API_MODEL(mockState, { thisModel: 'isFake' });
-      expect(mockState.apiModel.thisModel).to.equal('isFake');
+  describe('#apiEndpoint', () => {
+    it('should return an empty endpoint when no data', () => {
+      const mockStore = { baseURI: null, relativeURI: null, queryParams: [] };
+      expect(getters.apiEndpoint(mockStore)).to.equal('');
     });
 
-    it('should update the store with a new selection for the operation', () => {
-      const mockState = { currentOperationKey: null, currentResourceKey: null };
-      const mockOperation = {
-        key: () => 'op-key',
-        resource: () => ({ key: () => 'resource-key' }),
-      };
-      SELECT_OPERATION(mockState, mockOperation);
+    it('should return the correct endpoint when given baseURI', () => {
+      const mockStore = { baseURI: 'http://foo/bar', relativeURI: null, queryParams: [] };
+      expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar');
+    });
 
-      expect(mockState.currentOperation.key()).to.equal('op-key');
-      expect(mockState.currentResource.key()).to.equal('resource-key');
+    it('should return the correct endpoint when given baseURI and relative URI', () => {
+      const mockStore = { baseURI: 'http://foo/bar', relativeURI: 'womble', queryParams: [] };
+      expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble');
+
+      const mockStore2 = { baseURI: 'http://foo/bar', relativeURI: '/womble', queryParams: [] };
+      expect(getters.apiEndpoint(mockStore2)).to.equal('http://foo/bar/womble');
+    });
+
+    it('should return the correct endpoint when given uri parameters', () => {
+      const mockStore = { baseURI: 'http://foo/bar', relativeURI: 'womble', queryParams: [{ marvin: 'android' }] };
+
+      expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble?marvin=android');
+    });
+
+    it('should return the correct endpoint when given multiple uri parameters', () => {
+      const mockStore = { baseURI: 'http://foo/bar', relativeURI: 'womble', queryParams: [{ marvin: 'android' }, { life: 42 }] };
+
+      expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble?marvin=android&life=42');
     });
   });
 });
