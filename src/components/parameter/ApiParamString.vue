@@ -17,12 +17,15 @@
   };
 </script>
 
-<style>
-  .c-api-param--string .el-input {
-    max-width: 180px;
+<style lang='scss' scoped>
+  .c-api-param--string {
+    .el-input {
+      max-width: 180px;
+    }
+
+    .el-input__inner {
+      display: inline-block;
+    }
   }
 
-  .c-api-param--string .el-input__inner {
-    display: inline-block;
-  }
 </style>
