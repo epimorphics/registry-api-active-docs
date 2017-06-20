@@ -21,6 +21,9 @@
         <api-parameter v-bind:apiParam='apiParam'></api-parameter>
       </li>
     </ul>
+    <p>
+      URI [{{ computedURI }}]
+    </p>
   </section>
   <section class='c-api-operation-description no-selection' v-else>
     <p>Please choose an API operation</p>
@@ -29,11 +32,14 @@
 
 <script>
   import ApiParameter from './ApiParameter';
-  
+
   export default {
     computed: {
       operation() {
         return this.$store.state.currentOperation;
+      },
+      computedURI() {
+        return this.$store.getters.apiEndpoint;
       },
     },
     components: {

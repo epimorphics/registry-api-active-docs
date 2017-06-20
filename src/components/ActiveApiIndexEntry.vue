@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import { SELECT_OPERATION } from '@/store/mutation-types';
+  import * as mutations from '@/store/mutation-types';
 
   export default {
     computed: {
@@ -23,7 +23,12 @@
     methods: {
       /** User has clicked the button to select this operation */
       select() {
-        this.$store.commit(SELECT_OPERATION, this.operation);
+        this.$store.commit(mutations.SELECT_OPERATION, this.operation);
+
+        const resource = this.operation.resource();
+        this.$store.commit(mutations.CLEAR_API_PARAMS);
+        this.$store.commit(mutations.SET_API_BASE_URI, resource.absoluteURI());
+        this.$store.commit(mutations.SET_API_RELATIVE_URI, resource.relativeURI());
       },
     },
   };
