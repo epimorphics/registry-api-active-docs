@@ -28,6 +28,14 @@ export const mutations = {
   [types.SET_API_RELATIVE_URI](state, relativeURI) {
     state.relativeURI = relativeURI;
   },
+  /** A new API action has been set */
+  [types.SET_API_ACTION](state, apiAction) {
+    state.apiAction = apiAction;
+  },
+  /** A new result format has been selected */
+  [types.SET_API_RESULT_FORMAT](state, apiResultFormat) {
+    state.apiResultFormat = apiResultFormat;
+  },
   /** Add an API query parameter */
   [types.SELECT_API_PARAM](state, paramName, paramValue) {
     state.queryParams.push({ [paramName]: paramValue });

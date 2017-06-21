@@ -8,6 +8,8 @@ const {
   SELECT_API_PARAM,
   UNSELECT_API_PARAM,
   CLEAR_API_PARAMS,
+  SET_API_ACTION,
+  SET_API_RESULT_FORMAT,
 } = mutations;
 
 describe('mutations', () => {
@@ -63,5 +65,19 @@ describe('mutations', () => {
     CLEAR_API_PARAMS(mockState);
 
     expect(mockState.queryParams).to.have.length(0);
+  });
+
+  it('should set the current API action when requested', () => {
+    const mockState = { apiAction: null };
+    SET_API_ACTION(mockState, 'post');
+
+    expect(mockState.apiAction).to.equal('post');
+  });
+
+  it('should set the current API result format when requested', () => {
+    const mockState = { apiResultFormat: null };
+    SET_API_RESULT_FORMAT(mockState, 'xml');
+
+    expect(mockState.apiResultFormat).to.equal('xml');
   });
 });
