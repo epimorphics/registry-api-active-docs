@@ -9,7 +9,6 @@ const {
   UNSELECT_API_PARAM,
   CLEAR_API_PARAMS,
   SET_API_ACTION,
-  SET_API_RESULT_FORMAT,
 } = mutations;
 
 describe('mutations', () => {
@@ -72,12 +71,5 @@ describe('mutations', () => {
     SET_API_ACTION(mockState, 'post');
 
     expect(mockState.apiAction).to.equal('post');
-  });
-
-  it('should set the current API result format when requested', () => {
-    const mockState = { apiResultFormat: null };
-    SET_API_RESULT_FORMAT(mockState, 'xml');
-
-    expect(mockState.apiResultFormat).to.equal('xml');
   });
 });

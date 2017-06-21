@@ -32,10 +32,6 @@ export const mutations = {
   [types.SET_API_ACTION](state, apiAction) {
     state.apiAction = apiAction;
   },
-  /** A new result format has been selected */
-  [types.SET_API_RESULT_FORMAT](state, apiResultFormat) {
-    state.apiResultFormat = apiResultFormat;
-  },
   /** Add an API query parameter */
   [types.SELECT_API_PARAM](state, paramName, paramValue) {
     state.queryParams.push({ [paramName]: paramValue });
@@ -73,7 +69,8 @@ export const getters = {
 
   /** @return The currently selected API results format */
   apiResultFormat(store) {
-    return _.first(_.pluck(store.queryParams, '_format'));
+    // eslint-disable-next-line no-underscore-dangle
+    return (_.find(store.queryParams, '_format') || { _format: null })._format;
   },
 };
 
