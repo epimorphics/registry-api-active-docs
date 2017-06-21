@@ -21,9 +21,7 @@
         <api-parameter v-bind:apiParam='apiParam'></api-parameter>
       </li>
     </ul>
-    <p>
-      URI [{{ computedURI }}]
-    </p>
+    <api-results-viewer></api-results-viewer>
   </section>
   <section class='c-api-operation-description no-selection' v-else>
     <p>Please choose an API operation</p>
@@ -32,6 +30,7 @@
 
 <script>
   import ApiParameter from './ApiParameter';
+  import ApiResultsViewer from './ApiResultsViewer';
 
   export default {
     computed: {
@@ -44,6 +43,7 @@
     },
     components: {
       'api-parameter': ApiParameter,
+      'api-results-viewer': ApiResultsViewer,
     },
   };
 </script>
