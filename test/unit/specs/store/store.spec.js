@@ -32,4 +32,18 @@ describe('store', () => {
       expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble?marvin=android&life=42');
     });
   });
+
+  describe('#apiResultFormat', () => {
+    it('should return null if the results format has not yet been determined', () => {
+      const mockStore = { queryParams: [] };
+
+      expect(getters.apiResultFormat(mockStore)).to.be.null; // eslint-disable-line
+    });
+
+    it('should return the results format when it has been determined', () => {
+      const mockStore = { queryParams: [{ _format: 'json' }] };
+
+      expect(getters.apiResultFormat(mockStore)).to.equal('json');
+    });
+  });
 });

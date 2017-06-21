@@ -58,6 +58,7 @@ function asUrlParam(obj) {
 }
 
 export const getters = {
+  /** @return The current API endpoint, assembled from the various pieces */
   apiEndpoint(store) {
     if (store.baseURI) {
       const sep = (store.relativeURI && !store.relativeURI.startsWith('/')) ? '/' : '';
@@ -68,6 +69,11 @@ export const getters = {
     }
 
     return '';
+  },
+
+  /** @return The currently selected API results format */
+  apiResultFormat(store) {
+    return _.first(_.pluck(store.queryParams, '_format'));
   },
 };
 
