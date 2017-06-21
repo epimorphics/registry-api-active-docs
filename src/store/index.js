@@ -33,12 +33,16 @@ export const mutations = {
     state.apiAction = apiAction;
   },
   /** Add an API query parameter */
-  [types.SELECT_API_PARAM](state, paramName, paramValue) {
-    state.queryParams.push({ [paramName]: paramValue });
+  [types.SELECT_API_PARAM](state, paramValue) {
+    state.queryParams.push(paramValue);
   },
   /** Remove an API query parameter */
-  [types.UNSELECT_API_PARAM](state, paramName, paramValue) {
-    _.remove(state.queryParams, { [paramName]: paramValue });
+  [types.UNSELECT_API_PARAM](state, paramValue) {
+    const i = _.findIndex(state.queryParams, paramValue);
+
+    if (i >= 0) {
+      state.queryParams.splice(i, 1);
+    }
   },
   /** Remove all API query parameters */
   [types.CLEAR_API_PARAMS](state) {
@@ -50,6 +54,9 @@ function asUrlParam(obj) {
   const k = _.keys(obj)[0];
   const v = obj[k];
 
+  if (v === true) {
+    return k;
+  }
   return `${k}=${encodeURIComponent(v)}`;
 }
 
