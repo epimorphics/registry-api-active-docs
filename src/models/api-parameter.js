@@ -34,4 +34,9 @@ export default class ApiParameter {
   enumValues() {
     return this.json.enum || null;
   }
+
+  /** @return The name of the parameter */
+  name() {
+    return this.json.name;
+  }
 }

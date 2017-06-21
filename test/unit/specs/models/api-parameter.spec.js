@@ -43,4 +43,10 @@ describe('ApiParameter', () => {
       expect(meth.apiParameters()[3].enumValues()).to.deep.equal(['any', 'accepted']);
     });
   });
+
+  describe('#name', () => {
+    it('should return the name of the parameter', () => {
+      expect(param.name()).to.equal('non-member-properties');
+    });
+  });
 });
