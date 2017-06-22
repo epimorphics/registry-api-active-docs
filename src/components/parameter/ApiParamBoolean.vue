@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { SELECT_API_PARAM, UNSELECT_API_PARAM } from '@/store/mutation-types';
+  import updateOptionMixin from './update-option-mixin';
 
   export default {
     data: () => ({
@@ -15,10 +15,8 @@
       'apiParam',
     ],
     methods: {
-      enableOption() {
-        const op = this.checked ? SELECT_API_PARAM : UNSELECT_API_PARAM;
-        this.$store.commit(op, { [this.apiParam.name()]: true });
-      },
+      ...updateOptionMixin,
+      optionValue: () => true,
     },
   };
 </script>
