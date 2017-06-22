@@ -6973,3 +6973,7 @@ z-schema@^3.16.1:
     validator "^6.0.0"
   optionalDependencies:
     commander "^2.7.1"
+
+zeroclipboard@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/zeroclipboard/-/zeroclipboard-2.3.0.tgz#592ebd833a4308688b0739697d3dbf989002c9af"
