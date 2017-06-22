@@ -6,14 +6,13 @@
       v-bind:initialValue='null'
       v-bind:disabled='!checked'
       v-bind:size='"small"'
-      v-on:change='cacheAndUpdateOption'
+      v-on:change='updateOption'
     >
     </options-switch-compact>
   </div>
 </template>
 
 <script>
-  import { UNSELECT_API_PARAM } from '@/store/mutation-types';
   import updateOptionMixin from './update-option-mixin';
 
   export default {
@@ -28,11 +27,6 @@
       ...updateOptionMixin,
       optionValue() {
         return this.value;
-      },
-      cacheAndUpdateOption(value) {
-        this.$store.commit(UNSELECT_API_PARAM, this.apiParam.name());
-        this.$set(this, 'value', value);
-        this.updateOption();
       },
     },
   };
