@@ -59,6 +59,13 @@ describe('mutations', () => {
     expect(mockState.queryParams).to.have.length(0);
   });
 
+  it('should remove an API parameter on request, even if the value is falsey', () => {
+    const mockState = { queryParams: [{ foo: 0 }] };
+    UNSELECT_API_PARAM(mockState, 'foo');
+
+    expect(mockState.queryParams).to.have.length(0);
+  });
+
   it('should remove all current API params on request', () => {
     const mockState = { queryParams: [{ foo: 'bar' }, { p: 'q' }, { life: 42 }] };
     CLEAR_API_PARAMS(mockState);

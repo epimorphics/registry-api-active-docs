@@ -37,8 +37,8 @@ export const mutations = {
     state.queryParams.push(paramValue);
   },
   /** Remove an API query parameter */
-  [types.UNSELECT_API_PARAM](state, paramValue) {
-    const i = _.findIndex(state.queryParams, paramValue);
+  [types.UNSELECT_API_PARAM](state, paramName) {
+    const i = _.findIndex(state.queryParams, param => !_.isUndefined(param[paramName]));
 
     if (i >= 0) {
       state.queryParams.splice(i, 1);
