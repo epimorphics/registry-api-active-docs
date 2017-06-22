@@ -1,5 +1,5 @@
 <template>
-  <el-radio-group v-model='optionValue' v-bind:disabled='false'>
+  <el-radio-group v-model='optionValue' v-bind:disabled='false' v-on:change='onChange'>
     <template v-for='opt in options'>
       <el-radio-button v-bind:label='opt' size='size' v-bind:disabled='disabled'></el-radio-button>
     </template>
@@ -27,6 +27,9 @@
     methods: {
       initialiseModel(v) {
         this.$set(this, 'optionValue', v);
+      },
+      onChange() {
+        this.$emit('change', this.optionValue);
       },
     },
   };
