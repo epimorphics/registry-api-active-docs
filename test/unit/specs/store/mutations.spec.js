@@ -54,7 +54,7 @@ describe('mutations', () => {
 
   it('should remove an API parameter on request', () => {
     const mockState = { queryParams: [{ foo: 'bar' }] };
-    UNSELECT_API_PARAM(mockState, { foo: 'bar' });
+    UNSELECT_API_PARAM(mockState, 'foo');
 
     expect(mockState.queryParams).to.have.length(0);
   });
