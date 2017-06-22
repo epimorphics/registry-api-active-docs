@@ -5,6 +5,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 import locale from 'element-ui/lib/locale/lang/en';
 
+import 'vue-awesome/icons';
+import FontAwesomeIcon from 'vue-awesome/components/Icon';
+
 import App from './App';
 import router from './router';
 import store from './store/index';
@@ -17,6 +20,7 @@ Vue.use(ElementUI, { locale });
 
 // global components
 Vue.component('options-switch-compact', OptionsSwitchCompact);
+Vue.component('icon', FontAwesomeIcon);
 
 /* eslint-disable no-new */
 new Vue({
