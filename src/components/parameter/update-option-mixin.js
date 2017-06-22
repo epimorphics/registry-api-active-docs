@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { SELECT_API_PARAM, UNSELECT_API_PARAM } from '@/store/mutation-types';
 
 export default {
+  /** Event callback invoked when the gating option control for a parameter changes */
   enableOption() {
     if (!this.checked) {
       this.$store.commit(UNSELECT_API_PARAM, this.apiParam.name());
@@ -10,6 +11,8 @@ export default {
       this.updateOption(this.optionValue());
     }
   },
+
+  /** Event callback invoked when the value for an API parameter changes */
   updateOption(value) {
     const hasValue = !(_.isUndefined(value) ||
                        _.isNull(value) ||
