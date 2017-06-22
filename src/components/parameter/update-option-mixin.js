@@ -11,7 +11,10 @@ export default {
     }
   },
   updateOption(value) {
-    const hasValue = !(_.isUndefined(value) || _.isNull(value));
+    const hasValue = !(_.isUndefined(value) ||
+                       _.isNull(value) ||
+                       (_.isString(value) && _.isEmpty(value)));
+
     if (this.checked && hasValue) {
       this.$store.commit(UNSELECT_API_PARAM, this.apiParam.name());
       this.$store.commit(SELECT_API_PARAM, { [this.apiParam.name()]: value });
