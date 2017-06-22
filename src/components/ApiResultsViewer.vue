@@ -2,12 +2,12 @@
   <section id='results-view' class='c-api-results-view'>
     <h3>API preview</h3>
     <div class='c-api-results-view--uri'>
-      Endpoint URI:
+      Endpoint URI
+      <el-button id='copy-button' size='small' type='primary' title='Copy to clipboard'>
+        <icon name="clipboard"></icon>
+      </el-button>
       <div class='c-api-results-view--uri-group'>
         <code>{{ computedURI }}</code>
-        <el-button @click='copyUriToClipboard' id='copy-button'>
-          button
-        </el-button>
       </div>
     </div>
   </section>
@@ -25,26 +25,16 @@
     components: {
     },
     methods: {
-      /** Event handler for clicking on the load-to-clipboard button */
-      copyUriToClipboard() {
-        console.log('copy to clipboard not implemented yet');
-      },
     },
     mounted() {
-      console.log('Setting up zcclient');
+      ZeroClipboard.config({ swfPath: 'static/ZeroClipboard.swf' });
+
       const zcClient = new ZeroClipboard(document.getElementById('copy-button')); // eslint-disable-line
-      // zcClient.on('ready', () => {
-      //   console.log('zcclient ready');
-      //   zcClient.on('copy', (event) => {
-      //     console.log('zcclient on copy');
-      //     event.clipboardData.setdData('text/plain', 'this is only a test');
-      //   });
-      //   zcClient.on('aftercopy', (copyEvent) => {
-      //     console.log('zcclient on aftercopy');
-      //     copyEvent.target.style.display = 'none'; // eslint-disable-line no-param-reassign
-      //     console.log('Copied to clipboard');
-      //   });
-      // });
+      zcClient.on('ready', () => {
+        zcClient.on('copy', () => {
+          ZeroClipboard.setData('text/plain', this.computedURI);
+        });
+      });
     },
   };
 
