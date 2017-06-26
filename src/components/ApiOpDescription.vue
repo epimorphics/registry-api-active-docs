@@ -16,11 +16,15 @@
       {{ operation.description() }}
     </p>
     <h3>API parameters</h3>
-    <ul v-for='apiParam in operation.apiParameters()' class='u-list-unstyled'>
-      <li>
-        <api-parameter v-bind:apiParam='apiParam'></api-parameter>
-      </li>
-    </ul>
+    <el-row>
+      <ul v-for='apiParam in operation.apiParameters()' class='c-api-parameters-list u-list-unstyled'>
+        <el-col :sm='24' :md='12'>
+          <li>
+            <api-parameter v-bind:apiParam='apiParam'></api-parameter>
+          </li>
+        </el-col>
+      </ul>
+    </el-row>
     <api-results-viewer></api-results-viewer>
   </section>
   <section class='c-api-operation-description no-selection' v-else>
@@ -50,4 +54,14 @@
 
 <style lang='scss' scoped>
   @import "../styles/_common.scss";
+
+  .c-api-parameters-list {
+    li {
+      line-height: 2.5em;
+    }
+
+  }
+  ul > div {
+    border: 1px solid red;
+  }
 </style>
