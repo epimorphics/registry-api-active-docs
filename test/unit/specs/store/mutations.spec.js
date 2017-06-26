@@ -3,8 +3,7 @@ import { mutations } from '@/store/index';
 const {
   LOAD_API_MODEL,
   SELECT_OPERATION,
-  SET_API_BASE_URI,
-  SET_API_RELATIVE_URI,
+  SET_API_ABSOLUTE_URI,
   SELECT_API_PARAM,
   UNSELECT_API_PARAM,
   CLEAR_API_PARAMS,
@@ -31,18 +30,11 @@ describe('mutations', () => {
     expect(mockState.currentResource.key()).to.equal('resource-key');
   });
 
-  it('should update the store with a new API base URI', () => {
-    const mockState = { baseURI: null };
-    SET_API_BASE_URI(mockState, 'http://foo/bar/wombles');
+  it('should update the store with a new API URI', () => {
+    const mockState = { absoluteURI: null };
+    SET_API_ABSOLUTE_URI(mockState, 'http://foo/bar/wombles');
 
-    expect(mockState.baseURI).to.equal('http://foo/bar/wombles');
-  });
-
-  it('should update the store with a new API relative URI', () => {
-    const mockState = { relativeURI: null };
-    SET_API_RELATIVE_URI(mockState, 'marvin');
-
-    expect(mockState.relativeURI).to.equal('marvin');
+    expect(mockState.absoluteURI).to.equal('http://foo/bar/wombles');
   });
 
   it('should add an API parameter on request', () => {

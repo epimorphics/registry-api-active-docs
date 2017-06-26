@@ -20,13 +20,9 @@ export const mutations = {
     state.currentOperation = operation;
     state.currentResource = operation.resource();
   },
-  /** A new base URI has been given */
-  [types.SET_API_BASE_URI](state, uri) {
-    state.baseURI = uri;
-  },
-  /** A new relative URI for the API operation has been set */
-  [types.SET_API_RELATIVE_URI](state, relativeURI) {
-    state.relativeURI = relativeURI;
+  /** A new URI has been given */
+  [types.SET_API_ABSOLUTE_URI](state, uri) {
+    state.absoluteURI = uri;
   },
   /** A new API action has been set */
   [types.SET_API_ACTION](state, apiAction) {
@@ -67,12 +63,11 @@ function asUrlParam(obj) {
 export const getters = {
   /** @return The current API endpoint, assembled from the various pieces */
   apiEndpoint(store) {
-    if (store.baseURI) {
-      const sep = (store.relativeURI && !store.relativeURI.startsWith('/')) ? '/' : '';
+    if (store.absoluteURI) {
       const queryParams = _.map(store.queryParams, asUrlParam).join('&');
       const queryPart = _.isEmpty(queryParams) ? '' : `?${queryParams}`;
 
-      return `${store.baseURI}${sep}${store.relativeURI || ''}${queryPart}`;
+      return `${store.absoluteURI}${queryPart}`;
     }
 
     return '';
@@ -91,8 +86,7 @@ export default new Vuex.Store({
     apiModel: {},
     currentOperation: null,
     currentResource: null,
-    baseURI: null,
-    relativeURI: null,
+    absoluteURI: null,
     queryParams: [],
     apiResult: null,
   },

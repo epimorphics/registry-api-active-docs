@@ -3,7 +3,7 @@ const API_FIXTURE =
 {
   "title": "environment-registry",
   "version": "v1",
-  "baseUri": "http://environment-registry.epimorphics.net/registry/def/test-area",
+  "baseUri": "http://environment-registry.epimorphics.net/registry/def/test",
   "protocols": [
     "http"
   ],
