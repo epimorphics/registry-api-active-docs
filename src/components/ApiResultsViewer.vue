@@ -10,11 +10,19 @@
         <code>{{ computedURI }}</code>
       </div>
     </div>
+    <div class='c-api-results-view--actions'>
+      <el-button type='primary' size='large' v-on:click='invokeAPI'>
+        Try it
+      </el-button>
+    </div>
+    <api-output-display></api-output-display>
   </section>
 </template>
 
 <script>
   import ZeroClipboard from 'zeroclipboard';
+  import invokeApiEndpoint from '@/services/api-invoker';
+  import ApiOutputDisplay from './ApiOutputDisplay';
 
   export default {
     computed: {
@@ -23,8 +31,15 @@
       },
     },
     components: {
+      'api-output-display': ApiOutputDisplay,
     },
     methods: {
+      invokeAPI() {
+        invokeApiEndpoint({
+          endpoint: this.computedURI,
+          store: this.$store,
+        });
+      },
     },
     mounted() {
       ZeroClipboard.config({ swfPath: 'static/ZeroClipboard.swf' });

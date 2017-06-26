@@ -27,8 +27,7 @@
 
         const resource = this.operation.resource();
         this.$store.commit(mutations.CLEAR_API_PARAMS);
-        this.$store.commit(mutations.SET_API_BASE_URI, resource.absoluteURI());
-        this.$store.commit(mutations.SET_API_RELATIVE_URI, resource.relativeURI());
+        this.$store.commit(mutations.SET_API_ABSOLUTE_URI, resource.absoluteURI());
       },
     },
   };

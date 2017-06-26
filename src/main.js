@@ -7,6 +7,7 @@ import locale from 'element-ui/lib/locale/lang/en';
 
 import 'vue-awesome/icons';
 import FontAwesomeIcon from 'vue-awesome/components/Icon';
+import VueCodeMirror from 'vue-codemirror';
 
 import App from './App';
 import router from './router';
@@ -17,6 +18,7 @@ import OptionsSwitchCompact from './components/OptionsSwitchCompact';
 // plugins
 Vue.config.productionTip = false;
 Vue.use(ElementUI, { locale });
+Vue.use(VueCodeMirror);
 
 // global components
 Vue.component('options-switch-compact', OptionsSwitchCompact);
