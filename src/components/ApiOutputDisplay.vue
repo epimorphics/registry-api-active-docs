@@ -5,11 +5,21 @@
 </template>
 
 <script>
+  require('codemirror/mode/xml/xml');
+  require('codemirror/mode/javascript/javascript');
+  require('codemirror/mode/turtle/turtle');
+
+  const EDITOR_FORMATS = {
+    json: 'application/json',
+    rdf: 'application/xml',
+    ttl: 'text/turtle',
+  };
+
   export default {
     data: () => ({
       editorOptions: {
         tabSize: 2,
-        mode: 'text/plain',
+        mode: 'application/xml',
         lineNumbers: true,
         line: true,
         foldGutter: true,
@@ -21,6 +31,19 @@
     computed: {
       code() {
         return this.$store.state.apiResult;
+      },
+      editorFormat() {
+        const format = this.$store.getters.apiResultFormat || 'text/plain';
+        return EDITOR_FORMATS[format] || format;
+      },
+      editor() {
+        return this.$refs.codemirror.editor;
+      },
+    },
+    watch: {
+      editorFormat(format) {
+        console.log(`changing mode to ${format}`);
+        this.editor.setOption('mode', format);
       },
     },
   };
