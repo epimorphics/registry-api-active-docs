@@ -16,7 +16,7 @@
       {{ operation.description() }}
     </p>
     <h3>API parameters</h3>
-    <ul v-for='apiParam in operation.apiParameters()'>
+    <ul v-for='apiParam in operation.apiParameters()' class='u-list-unstyled'>
       <li>
         <api-parameter v-bind:apiParam='apiParam'></api-parameter>
       </li>
@@ -48,5 +48,6 @@
   };
 </script>
 
-<style>
+<style lang='scss' scoped>
+  @import "../styles/_common.scss";
 </style>
