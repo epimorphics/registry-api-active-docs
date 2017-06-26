@@ -48,6 +48,10 @@ export const mutations = {
   [types.CLEAR_API_PARAMS](state) {
     state.queryParams.splice(0, state.queryParams.length);
   },
+  /** Record the API result */
+  [types.SET_API_RESULT](state, result) {
+    state.apiResult = result;
+  },
 };
 
 function asUrlParam(obj) {
@@ -90,6 +94,7 @@ export default new Vuex.Store({
     baseURI: null,
     relativeURI: null,
     queryParams: [],
+    apiResult: null,
   },
   mutations,
   getters,

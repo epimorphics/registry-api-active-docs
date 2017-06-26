@@ -9,6 +9,7 @@ const {
   UNSELECT_API_PARAM,
   CLEAR_API_PARAMS,
   SET_API_ACTION,
+  SET_API_RESULT,
 } = mutations;
 
 describe('mutations', () => {
@@ -78,5 +79,12 @@ describe('mutations', () => {
     SET_API_ACTION(mockState, 'post');
 
     expect(mockState.apiAction).to.equal('post');
+  });
+
+  it('should record the API result when requested', () => {
+    const mockState = { apiResult: null };
+    SET_API_RESULT(mockState, '{"foo": "bar"}');
+
+    expect(mockState.apiResult).to.equal('{"foo": "bar"}');
   });
 });
