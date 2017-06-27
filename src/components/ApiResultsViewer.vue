@@ -3,11 +3,11 @@
     <h3>API preview</h3>
     <div class='c-api-results-view--uri'>
       Endpoint URI
-      <el-button id='copy-button' size='small' type='primary' title='Copy to clipboard'>
-        <icon name="clipboard"></icon>
-      </el-button>
       <div class='c-api-results-view--uri-group'>
         <code>{{ computedURI }}</code>
+        <el-button id='copy-button' size='small' type='primary' title='Copy to clipboard'>
+          <icon name="clipboard"></icon>
+        </el-button>
       </div>
     </div>
     <div class='c-api-results-view--actions'>
