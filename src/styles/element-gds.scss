@@ -6,6 +6,10 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
 
+.u-department-colour {
+  border-top: 10px solid $department-for-environment-food-rural-affairs;
+}
+
 .el-button {
   border-radius: 0;
 
