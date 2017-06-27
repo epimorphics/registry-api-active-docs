@@ -1,24 +1,29 @@
 <template>
-  <el-row>
-    <el-col :span='6' class='o-index-container'>
-      <active-api-index v-bind:resources='endpoints'></active-api-index>
-    </el-col>
-    <el-col :span='18' class='o-api-description-container'>
-      <api-op-description></api-op-description>
-    </el-col>
-  </el-row>
+  <div class="o-container">
+    <env-registry-header></env-registry-header>
+    <el-row>
+      <el-col :span='6' class='o-index-container'>
+        <active-api-index v-bind:resources='endpoints'></active-api-index>
+      </el-col>
+      <el-col :span='18' class='o-api-description-container'>
+        <api-op-description></api-op-description>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
   import ApiModelLoader from '@/services/api-model-loader';
   import ActiveApiIndex from '@/components/ActiveApiIndex';
   import ApiOpDescription from '@/components/ApiOpDescription';
+  import EnvRegistryHeader from '@/components/EnvRegistryHeader';
   import { LOAD_API_MODEL } from '@/store/mutation-types';
 
   export default {
     components: {
       'active-api-index': ActiveApiIndex,
       'api-op-description': ApiOpDescription,
+      'env-registry-header': EnvRegistryHeader,
     },
     computed: {
       endpoints() {

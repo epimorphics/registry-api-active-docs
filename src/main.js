@@ -2,8 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
 /* eslint-disable import/first */
-import './styles/theme/index.css';
 import 'element-ui/lib/theme-default/index.css';
+import './styles/element-gds.scss';
 
 import Vue from 'vue';
 import ElementUI from 'element-ui';

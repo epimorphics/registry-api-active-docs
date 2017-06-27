@@ -1,0 +1,21 @@
+/** Overrides to bring ElementUI theme in line with GDS */
+@import '../../node_modules/govuk_frontend_toolkit/stylesheets/_colours.scss';
+
+body {
+  margin: 0;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+.el-button {
+  border-radius: 0;
+
+  &--primary {
+    background-color: $button-colour;
+    border: 1px solid $button-colour;
+  }
+
+  &--primary:hover {
+    background-color: lighten($button-colour, 8%);
+    border: 1px solid $button-colour;
+  }
+}
