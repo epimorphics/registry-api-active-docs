@@ -26,4 +26,7 @@
 </script>
 
 <style lang='scss' scoped>
+  .c-api-param--number > .el-input-number {
+    vertical-align: middle !important;
+  }
 </style>
