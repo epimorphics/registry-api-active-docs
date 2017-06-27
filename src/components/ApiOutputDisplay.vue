@@ -59,6 +59,7 @@
         gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
         styleSelectedText: true,
         highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
+        readOnly: true,
       },
       tableData: [],
       tableColumns: [],
