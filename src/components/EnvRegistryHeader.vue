@@ -18,10 +18,11 @@
 
 <script>
   export default {
+    data: () => ({ activeIndex: '-1' }),
   };
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
   .c-env-registry-header {
     color: white;
     background-color: black;
@@ -32,13 +33,22 @@
       margin-left: 2em;
     }
 
-    .el-menu--horizontal.el-menu--dark {
+    ul.el-menu--horizontal.el-menu--dark {
       background-color: black;
 
-      .el-menu-item {
-        color: white !important;
+      >.el-menu-item,
+      .el-submenu__title,
+      .el-submenu__icon-arrow {
+        color: white;
+
+        &:hover {
+          background-color: black;
+        }
+      }
+
+      a {
+        text-decoration: none;
       }
     }
-
   }
 </style>
