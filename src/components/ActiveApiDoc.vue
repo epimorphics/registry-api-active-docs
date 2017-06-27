@@ -1,6 +1,6 @@
 <template>
   <div class="o-container">
-    <env-registry-header></env-registry-header>
+    <env-registry-header />
     <el-row>
       <el-col :span='6' class='o-index-container'>
         <active-api-index v-bind:resources='endpoints'></active-api-index>
@@ -9,6 +9,7 @@
         <api-op-description></api-op-description>
       </el-col>
     </el-row>
+    <env-registry-footer />
   </div>
 </template>
 
@@ -17,6 +18,8 @@
   import ActiveApiIndex from '@/components/ActiveApiIndex';
   import ApiOpDescription from '@/components/ApiOpDescription';
   import EnvRegistryHeader from '@/components/EnvRegistryHeader';
+  import EnvRegistryFooter from '@/components/EnvRegistryFooter';
+
   import { LOAD_API_MODEL } from '@/store/mutation-types';
 
   export default {
@@ -24,6 +27,7 @@
       'active-api-index': ActiveApiIndex,
       'api-op-description': ApiOpDescription,
       'env-registry-header': EnvRegistryHeader,
+      'env-registry-footer': EnvRegistryFooter,
     },
     computed: {
       endpoints() {
