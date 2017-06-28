@@ -1,5 +1,6 @@
 <template>
   <div class='c-api-output-display'>
+    <h3>API output</h3>
     <template v-if='editorFormat === "csv"'>
       <el-table v-bind:data='tableData' class='c-api-output-display--table'>
         <template v-for='column in tableColumns'>

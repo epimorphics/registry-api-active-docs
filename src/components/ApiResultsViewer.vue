@@ -9,8 +9,6 @@
           <icon name="clipboard"></icon>
         </el-button>
       </div>
-    </div>
-    <div class='c-api-results-view--actions'>
       <el-button type='primary' size='large' v-on:click='invokeAPI'>
         Try it
       </el-button>
