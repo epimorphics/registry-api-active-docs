@@ -1,6 +1,17 @@
 <template>
   <div class="o-container">
     <env-registry-header />
+    <el-row>
+      <el-col :sm='{span: 24, offset: 0}' :md='{span: 18, offset: 0}' :lg='{span: 16, offset: 2}'>
+        <h2>Environment Registry API: active documentation sandbox</h2>
+        <p>
+          The environment registry manages collections of controlled terms and codelists
+          for the Defra family of organizations. Read more
+          <a href='/registry/ui/api-documentation'>about the API</a>, or try out
+          sample API calls below.
+        </p>
+      </el-col>
+    </el-row>
     <el-row :gutter='15'>
       <el-col :md='{span: 6, offset: 0}' :lg='{span: 4, offset: 2}' :sm='24' class='o-index-container'>
         <active-api-index v-bind:resources='endpoints'></active-api-index>

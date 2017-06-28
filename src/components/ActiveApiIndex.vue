@@ -27,6 +27,7 @@
 
   .c-active-api-index {
     border: 1px solid $el-border-grey;
+    margin: 20px 0 0 0;
 
     h2 {
       background-color: $grey-1;
