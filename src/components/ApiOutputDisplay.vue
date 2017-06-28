@@ -53,7 +53,7 @@
     data: () => ({
       editorOptions: {
         tabSize: 2,
-        mode: 'application/xml',
+        mode: 'application/javascript',
         lineNumbers: true,
         line: true,
         foldGutter: true,

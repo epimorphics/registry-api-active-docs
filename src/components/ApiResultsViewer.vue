@@ -13,6 +13,7 @@
         Try it
       </el-button>
     </div>
+    <api-payload-editor v-if='expectsPayload'></api-payload-editor>
     <api-output-display></api-output-display>
   </section>
 </template>
@@ -21,15 +22,22 @@
   import ZeroClipboard from 'zeroclipboard';
   import invokeApiEndpoint from '@/services/api-invoker';
   import ApiOutputDisplay from './ApiOutputDisplay';
+  import ApiPayloadEditor from './ApiPayloadEditor';
 
   export default {
+    data: () => ({
+    }),
     computed: {
       computedURI() {
         return this.$store.getters.apiEndpoint;
       },
+      expectsPayload() {
+        return this.$store.state.currentOperation.expectsPayload();
+      },
     },
     components: {
       'api-output-display': ApiOutputDisplay,
+      'api-payload-editor': ApiPayloadEditor,
     },
     methods: {
       invokeAPI() {
