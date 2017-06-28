@@ -49,7 +49,9 @@
 </script>
 
 <style lang='scss' scoped>
-  $borderColor: rgb(191, 203, 217);
+  @import '../styles/_common.scss';
+
+  $borderColor: $el-border-grey;
   $radius: 4px;
 
   .c-options-switch {
@@ -64,12 +66,14 @@
 
     &--readonly-item {
       display: inline-block;
-      padding: 5px 10px;
+      padding: 4px 8px;
       border-left: 1px solid $borderColor;
+      text-transform: uppercase;
+      font-size: 80%;
     }
 
     &--readonly-item.active {
-      background-color: green;
+      background-color: $brown;
       color: white;
     }
 

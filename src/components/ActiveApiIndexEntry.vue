@@ -79,7 +79,8 @@
     }
 
     &--name {
-      padding-right: 25px
+      padding-right: 30px;
+      font-size: 14px;
     }
 
     &:hover {
@@ -88,7 +89,6 @@
   }
 
   .c-api-operation--action {
-    // float: right;
     background-color: $brown;
     color: white;
     text-transform: uppercase;
