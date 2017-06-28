@@ -17,16 +17,11 @@
 <script>
   import parse from 'csv-parse/lib/sync';
   import _ from 'lodash';
+  import ContentTypes from '@/models/content-types';
 
   require('codemirror/mode/xml/xml');
   require('codemirror/mode/javascript/javascript');
   require('codemirror/mode/turtle/turtle');
-
-  const EDITOR_FORMATS = {
-    json: 'application/javascript',
-    rdf: 'application/xml',
-    ttl: 'text/turtle',
-  };
 
   /** @return True if the chosen data format is CSV */
   function isCsv(editorFormat) {
@@ -70,8 +65,8 @@
         return this.$store.state.apiResult;
       },
       editorFormat() {
-        const format = this.$store.getters.apiResultFormat || 'text/plain';
-        return EDITOR_FORMATS[format] || format;
+        const format = this.$store.getters.apiResultFormat;
+        return format ? ContentTypes.byName(format).codemirrorMode : 'text/plain';
       },
       editor() {
         return this.$refs.codemirror && this.$refs.codemirror.editor;
@@ -92,10 +87,12 @@
   };
 </script>
 
-<style>
-  #codemirror {
-    width: 100%;
-    min-height: 10em;
-    border: 1px solid blue;
+<style lang='scss'>
+  @import '../styles/_common.scss';
+
+  .c-api-output-display {
+    .CodeMirror {
+      border: 1px solid $el-border-grey;
+    }
   }
 </style>

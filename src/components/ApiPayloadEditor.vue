@@ -13,16 +13,18 @@
       </options-switch-compact>
     </p>
     <div class='c-payload-editor--codemirror'>
-      <codemirror v-model='payload' :options='payloadEditorOptions' ref='payload-editor' />
+      <codemirror v-model='payload' :options='payloadEditorOptions' ref='payloadEditor' />
     </div>
   </div>
 </template>
 
 <script>
+  import ContentTypes from '@/models/content-types';
+
   export default {
     data: () => ({
       payloadContentType: 'json',
-      contentTypes: ['csv', 'json', 'ttl', 'rdf'],
+      contentTypes: ContentTypes.all(),
       payload: '',
       payloadEditorOptions: {
         tabSize: 2,
@@ -35,9 +37,23 @@
         highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true },
       },
     }),
+    computed: {
+      editorFormat() {
+        return ContentTypes.byName(this.payloadContentType).codemirrorMode;
+      },
+      editor() {
+        return this.$refs.payloadEditor && this.$refs.payloadEditor.editor;
+      },
+    },
     methods: {
       updateOption(contentType) {
         this.payloadContentType = contentType;
+      },
+    },
+    watch: {
+      editorFormat(format) {
+        console.log(`setting format to ${format}`);
+        this.editor.setOption('mode', format);
       },
     },
   };

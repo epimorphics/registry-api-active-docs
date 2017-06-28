@@ -14,8 +14,8 @@ const CONTENT_TYPES = {
   },
   ttl: {
     label: 'Turtle',
-    codemirrorMode: 'application/ttl',
-    mimeType: 'application/ttl',
+    codemirrorMode: 'text/turtle',
+    mimeType: 'text/turtle',
   },
   rdf: {
     label: 'RDF/XML',
