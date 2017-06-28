@@ -1,7 +1,7 @@
 <template>
   <div class="o-container">
     <env-registry-header />
-    <el-row>
+    <el-row :gutter='15'>
       <el-col :md='{span: 6, offset: 0}' :lg='{span: 4, offset: 2}' :sm='24' class='o-index-container'>
         <active-api-index v-bind:resources='endpoints'></active-api-index>
       </el-col>

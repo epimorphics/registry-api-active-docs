@@ -1,8 +1,14 @@
+@import '../../node_modules/govuk_frontend_toolkit/stylesheets/_colours';
+
+/* Colours */
+$el-border-grey: #bfcbd9;
+
+/* Utility classes */
 .u-list-unstyled {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
-  
+
   li {
     margin-left: 0;
     padding-left: 0;
