@@ -41,4 +41,11 @@ describe('ApiMethod', () => {
       expect(params).to.not.be.empty; //eslint-disable-line
     });
   });
+
+  describe('#expectsPayload', () => {
+    it('should return true if the API call expects a payload', () => {
+      expect(meth.expectsPayload()).to.equal(false);
+      expect(r.methods()[1].expectsPayload()).to.equal(true);
+    });
+  });
 });

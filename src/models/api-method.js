@@ -42,4 +42,9 @@ export default class ApiMethod {
     }
     return this.params;
   }
+
+  /** @return True if this is an operation that expects a payload */
+  expectsPayload() {
+    return !!this.action().match(/put|post|patch/i);
+  }
 }
