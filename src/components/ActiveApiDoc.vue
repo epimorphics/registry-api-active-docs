@@ -2,10 +2,10 @@
   <div class="o-container">
     <env-registry-header />
     <el-row>
-      <el-col :span='6' class='o-index-container'>
+      <el-col :md='{span: 6, offset: 0}' :lg='{span: 4, offset: 2}' :sm='24' class='o-index-container'>
         <active-api-index v-bind:resources='endpoints'></active-api-index>
       </el-col>
-      <el-col :span='18' class='o-api-description-container'>
+      <el-col :md='{span: 18, offset: 0}' :lg='{span: 16, offset: 0}' :sm='24' class='o-api-description-container'>
         <api-op-description></api-op-description>
       </el-col>
     </el-row>
