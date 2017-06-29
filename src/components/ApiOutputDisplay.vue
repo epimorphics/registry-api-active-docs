@@ -1,7 +1,7 @@
 <template>
   <div class='c-api-output-display'>
     <h3>API output</h3>
-    <template v-if='editorFormat === "csv"'>
+    <template v-if='resultFormat === "csv"'>
       <el-table v-bind:data='tableData' class='c-api-output-display--table'>
         <template v-for='column in tableColumns'>
           <el-table-column v-bind:prop='column' v-bind:label='column'></el-table-column>
@@ -64,22 +64,24 @@
       code() {
         return this.$store.state.apiResult;
       },
-      editorFormat() {
-        const format = this.$store.getters.apiResultFormat;
-        return format ? ContentTypes.byName(format).codemirrorMode : 'text/plain';
+      resultFormat() {
+        return this.$store.getters.apiResultFormat || 'json';
+      },
+      editorMode() {
+        return ContentTypes.byName(this.resultFormat).codemirrorMode;
       },
       editor() {
         return this.$refs.codemirror && this.$refs.codemirror.editor;
       },
     },
     watch: {
-      editorFormat(format) {
+      resultFormat(format) {
         if (!isCsv(format) && this.editor) {
-          setEditorOptions(this.editor, format);
+          setEditorOptions(this.editor, this.editorMode);
         }
       },
       code(code) {
-        if (isCsv(this.editorFormat)) {
+        if (isCsv(this.resultFormat)) {
           setCsvData.call(this, code);
         }
       },
