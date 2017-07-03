@@ -17,7 +17,7 @@
 <script>
   import parse from 'csv-parse/lib/sync';
   import _ from 'lodash';
-  import ContentTypes from '@/models/content-types';
+  import SelectedFormatMixin from '@/services/selected-format-mixin';
 
   require('codemirror/mode/xml/xml');
   require('codemirror/mode/javascript/javascript');
@@ -61,14 +61,9 @@
       tableColumns: [],
     }),
     computed: {
+      ...SelectedFormatMixin,
       code() {
         return this.$store.state.apiResult;
-      },
-      resultFormat() {
-        return this.$store.getters.apiResultFormat || 'json';
-      },
-      editorMode() {
-        return ContentTypes.byName(this.resultFormat).codemirrorMode;
       },
       editor() {
         return this.$refs.codemirror && this.$refs.codemirror.editor;

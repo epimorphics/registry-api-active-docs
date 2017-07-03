@@ -24,7 +24,11 @@ function asCodeString(response) {
  */
 export default function invokeApiEndpoint(options) {
   Axios
-    .get(options.endpoint)
+    .get(options.endpoint, {
+      headers: {
+        Accept: options.contentType,
+      },
+    })
     .then((response) => {
       options.store.commit(SET_API_RESULT, asCodeString(response));
     });

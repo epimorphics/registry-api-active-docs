@@ -21,6 +21,7 @@
 <script>
   import ZeroClipboard from 'zeroclipboard';
   import invokeApiEndpoint from '@/services/api-invoker';
+  import SelectedFormatMixin from '@/services/selected-format-mixin';
   import ApiOutputDisplay from './ApiOutputDisplay';
   import ApiPayloadEditor from './ApiPayloadEditor';
 
@@ -28,6 +29,7 @@
     data: () => ({
     }),
     computed: {
+      ...SelectedFormatMixin,
       computedURI() {
         return this.$store.getters.apiEndpoint;
       },
@@ -43,6 +45,7 @@
       invokeAPI() {
         invokeApiEndpoint({
           endpoint: this.computedURI,
+          acceptType: this.resultMimeType,
           store: this.$store,
         });
       },
