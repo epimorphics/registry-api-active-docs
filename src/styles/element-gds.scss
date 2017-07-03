@@ -13,7 +13,7 @@ body {
 .el-button {
   border-radius: 0;
 
-  &--primary {
+  &--primary, &--primary:focus {
     background-color: $button-colour;
     border: 1px solid $button-colour;
   }

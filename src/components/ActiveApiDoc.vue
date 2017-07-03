@@ -3,7 +3,7 @@
     <env-registry-header />
     <el-row>
       <el-col :sm='{span: 24, offset: 0}' :md='{span: 18, offset: 0}' :lg='{span: 16, offset: 2}'>
-        <h2>Environment Registry API: active documentation sandbox</h2>
+        <h2>Environment Registry API: try-out area</h2>
         <p>
           The environment registry manages collections of controlled terms and codelists
           for the Defra family of organizations. Read more
