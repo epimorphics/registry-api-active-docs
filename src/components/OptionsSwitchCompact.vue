@@ -48,7 +48,7 @@
   };
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
   @import '../styles/_common.scss';
 
   $borderColor: $el-border-grey;
@@ -87,5 +87,12 @@
       border-top-right-radius: $radius;
       border-bottom-right-radius: $radius;
     }
+  }
+
+  .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+    color: $white;
+    background-color: $yellow;
+    border-color: darken($yellow, 20%);
+    box-shadow: -1px 0 0 0 darken($yellow, 20%);
   }
 </style>

@@ -23,3 +23,8 @@ body {
     border: 1px solid $button-colour;
   }
 }
+
+.el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: $yellow;
+    border-color: darken($yellow, 20%);
+}
