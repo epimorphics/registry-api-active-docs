@@ -26,7 +26,7 @@ export default function invokeApiEndpoint(options) {
   Axios
     .get(options.endpoint, {
       headers: {
-        Accept: options.contentType,
+        Accept: options.acceptType,
       },
     })
     .then((response) => {

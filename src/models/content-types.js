@@ -2,10 +2,10 @@
 import _ from 'lodash';
 
 const CONTENT_TYPES = {
-  json: {
-    label: 'json',
+  'json-ld': {
+    label: 'json-ld',
     codemirrorMode: 'application/javascript',
-    mimeType: 'application/json',
+    mimeType: 'application/ld+json',
   },
   csv: {
     label: 'csv',
