@@ -9,6 +9,9 @@ const {
   CLEAR_API_PARAMS,
   SET_API_ACTION,
   SET_API_RESULT,
+  CLEAR_API_RESULT,
+  SET_API_PAYLOAD,
+  CLEAR_API_PAYLOAD,
 } = mutations;
 
 describe('mutations', () => {
@@ -78,5 +81,26 @@ describe('mutations', () => {
     SET_API_RESULT(mockState, '{"foo": "bar"}');
 
     expect(mockState.apiResult).to.equal('{"foo": "bar"}');
+  });
+
+  it('should clear the API result when requested', () => {
+    const mockState = { apiResult: '{"foo": "bar"}' };
+    CLEAR_API_RESULT(mockState);
+
+    expect(mockState.apiResult).to.equal(null);
+  });
+
+  it('should record the API payload when requested', () => {
+    const mockState = { apiPayload: null };
+    SET_API_PAYLOAD(mockState, '{"foo": "bar"}');
+
+    expect(mockState.apiPayload).to.equal('{"foo": "bar"}');
+  });
+
+  it('should clear the API payload when requested', () => {
+    const mockState = { apiPayload: '{"foo": "bar"}' };
+    CLEAR_API_PAYLOAD(mockState);
+
+    expect(mockState.apiPayload).to.equal(null);
   });
 });
