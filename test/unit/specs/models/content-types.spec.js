@@ -3,13 +3,13 @@ import ContentTypes from '@/models/content-types';
 describe('ContentTypes', () => {
   describe('#all', () => {
     it('should return a sorted array of content types', () => {
-      expect(ContentTypes.all()).to.deep.equal(['csv', 'json', 'rdf', 'ttl']);
+      expect(ContentTypes.all()).to.deep.equal(['csv', 'json-ld', 'rdf', 'ttl']);
     });
   });
 
   describe('#allLabels', () => {
     it('should return an array of content type labels', () => {
-      expect(ContentTypes.allLabels()).to.deep.equal(['csv', 'json', 'RDF/XML', 'Turtle']);
+      expect(ContentTypes.allLabels()).to.deep.equal(['csv', 'json-ld', 'RDF/XML', 'Turtle']);
     });
   });
 
