@@ -7,6 +7,9 @@ mediaType:
 protocols:
   - http
 types:
+securitySchemes:
+  - basic:
+    type: Basic Authentication
 /:
   get:
     displayName: List the register
@@ -96,6 +99,7 @@ types:
   post:
     displayName: Add to the register
     description: Register a new item in the register
+    securedBy: [basic]
 /:{version}:
   get:
     displayName: List a specific version of the register

@@ -74,16 +74,16 @@ const FIXTURE =
         },
         "_format": {
           "name": "_format",
-          "displayName": "Version at",
+          "displayName": "Format",
           "typePropertyKind": "TYPE_EXPRESSION",
           "type": [
             "string"
           ],
           "required": false,
-          "description": "Specifies the version of the register that was in effect at the given XSD DateTime",
+          "description": "Specifies the return encoding of the results",
           "enum": [
             "csv",
-            "json",
+            "json-ld",
             "ttl",
             "rdf"
           ]
@@ -192,6 +192,9 @@ const FIXTURE =
       "protocols": [
         "HTTP"
       ],
+      "securedBy": [
+        "basic"
+      ],
       "description": "Register a new item in the register",
       "displayName": "Add to the register",
       "method": "post",
@@ -214,7 +217,7 @@ const FIXTURE =
     }
   },
   "relativeUriPathSegments": [],
-  "absoluteUri": "http://environment-registry.epimorphics.net/registry/def/test-area/"
+  "absoluteUri": "http://environment-registry.epimorphics.net/registry/def/test/"
 };
 
 export default FIXTURE;

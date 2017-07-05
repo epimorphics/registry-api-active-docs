@@ -47,4 +47,9 @@ export default class ApiMethod {
   expectsPayload() {
     return !!this.action().match(/put|post|patch/i);
   }
+
+  /** @return {boolean} True if the operation needs to be secured with basic auth */
+  requiresAuth() {
+    return !!this.json.securedBy;
+  }
 }

@@ -48,4 +48,11 @@ describe('ApiMethod', () => {
       expect(r.methods()[1].expectsPayload()).to.equal(true);
     });
   });
+
+  describe('#requiresAuth', () => {
+    it('should return false if basic auth is not expected', () => {
+      expect(meth.requiresAuth()).to.equal(false);
+      expect(r.methods()[1].requiresAuth()).to.equal(true);
+    });
+  });
 });
