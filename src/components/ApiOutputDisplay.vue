@@ -1,16 +1,22 @@
 <template>
   <div class='c-api-output-display'>
+    <template v-if='this.showReturnContent'>
     <h3>API output</h3>
-    <template v-if='resultFormat === "csv"'>
-      <el-table v-bind:data='tableData' class='c-api-output-display--table'>
-        <template v-for='column in tableColumns'>
-          <el-table-column v-bind:prop='column' v-bind:label='column'></el-table-column>
-        </template>
-      </el-table>
+      <template v-if='resultFormat === "csv"'>
+        <el-table v-bind:data='tableData' class='c-api-output-display--table'>
+          <template v-for='column in tableColumns'>
+            <el-table-column v-bind:prop='column' v-bind:label='column'></el-table-column>
+          </template>
+        </el-table>
+      </template>
+      <template v-else>
+        <codemirror v-model='code' :options='editorOptions' ref='codemirror'></codemirror>
+      </template>
     </template>
-    <template v-else>
-      <codemirror v-model='code' :options='editorOptions' ref='codemirror'></codemirror>
-    </template>
+    <div class='c-api-output-display--headers'>
+      <h4>Returned HTTP headers</h4>
+      <pre class='c-api-output-display--headers-listing'>{{ this.apiReturnHeaders }}</pre>
+    </div>
   </div>
 </template>
 
@@ -68,6 +74,12 @@
       editor() {
         return this.$refs.codemirror && this.$refs.codemirror.editor;
       },
+      apiReturnHeaders() {
+        return this.$store.state.apiReturnHeaders;
+      },
+      showReturnContent() {
+        return this.$store.state.currentOperation.expectsContentType();
+      },
     },
     watch: {
       resultFormat(format) {
@@ -91,5 +103,10 @@
     .CodeMirror {
       border: 1px solid $el-border-grey;
     }
+  }
+
+  .c-api-output-display--headers-listing {
+    border: 1px solid $border-colour;
+    min-height: 5em;
   }
 </style>
