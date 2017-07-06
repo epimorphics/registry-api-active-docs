@@ -1,6 +1,6 @@
 <template>
   <div class='c-payload-editor'>
-    <h4>API payload</h4>
+    <h3>API payload</h3>
     <p>Add content here to use in POST and PUT operations to perform updates using the API.</p>
     <p>
       Payload content type:
@@ -23,7 +23,7 @@
   import { SET_API_PAYLOAD } from '@/store/mutation-types';
 
   const DEFAULT_PAYLOAD_CONTENT_TYPE = 'json-ld';
-  
+
   export default {
     data: () => ({
       payloadContentType: DEFAULT_PAYLOAD_CONTENT_TYPE,
@@ -47,20 +47,22 @@
       editor() {
         return this.$refs.payloadEditor && this.$refs.payloadEditor.editor;
       },
-      apiPayload() {
-        return {
-          contentType: this.payloadContentType,
-          data: this.payload,
-        };
-      },
     },
     methods: {
       updateOption(contentType) {
         this.payloadContentType = contentType;
-        this.updatePayload();
+        this.storePayload(contentType, this.payload);
       },
-      updatePayload() {
-        this.$store.commit(SET_API_PAYLOAD, this.apiPayload);
+      updatePayload(payloadData) {
+        this.storePayload(this.payloadContentType, payloadData);
+      },
+      storePayload(payloadContentType, payloadData) {
+        const payload = {
+          contentType: payloadContentType,
+          data: payloadData,
+        };
+
+        this.$store.commit(SET_API_PAYLOAD, payload);
       },
     },
     watch: {

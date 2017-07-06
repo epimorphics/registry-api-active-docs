@@ -1,5 +1,7 @@
 <template>
   <section id='results-view' class='c-api-results-view'>
+    <api-payload-editor v-if='expectsPayload'></api-payload-editor>
+
     <h3>API preview</h3>
     <div class='c-api-results-view--uri'>
       Endpoint URI
@@ -13,7 +15,6 @@
         Try it
       </el-button>
     </div>
-    <api-payload-editor v-if='expectsPayload'></api-payload-editor>
     <api-output-display></api-output-display>
   </section>
 </template>
@@ -22,6 +23,7 @@
   import ZeroClipboard from 'zeroclipboard';
   import invokeApiEndpoint from '@/services/api-invoker';
   import SelectedFormatMixin from '@/services/selected-format-mixin';
+  import ContentTypes from '@/models/content-types';
   import ApiOutputDisplay from './ApiOutputDisplay';
   import ApiPayloadEditor from './ApiPayloadEditor';
 
@@ -32,6 +34,13 @@
       ...SelectedFormatMixin,
       computedURI() {
         return this.$store.getters.apiEndpoint;
+      },
+      apiPayload() {
+        return this.$store.state.apiPayload;
+      },
+      apiPayloadMimeType() {
+        const cType = this.apiPayload && this.apiPayload.contentType;
+        return cType ? ContentTypes.byName(this.apiPayload.contentType).mimeType : null;
       },
       expectsPayload() {
         return this.$store.state.currentOperation.expectsPayload();
@@ -47,13 +56,15 @@
           endpoint: this.computedURI,
           acceptType: this.resultMimeType,
           store: this.$store,
+          payload: this.apiPayload && this.apiPayload.data,
+          payloadContentType: this.apiPayloadMimeType,
         });
       },
     },
     mounted() {
       ZeroClipboard.config({ swfPath: 'static/ZeroClipboard.swf' });
 
-      const zcClient = new ZeroClipboard(document.getElementById('copy-button')); // eslint-disable-line
+      const zcClient = new ZeroClipboard(document.getElementById('copy-button'));
       zcClient.on('ready', () => {
         zcClient.on('copy', () => {
           ZeroClipboard.setData('text/plain', this.computedURI);
