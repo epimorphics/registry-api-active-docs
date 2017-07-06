@@ -60,6 +60,14 @@ export const mutations = {
   [types.CLEAR_API_PAYLOAD](state) {
     state.apiPayload = null;
   },
+  /** Record the API headers */
+  [types.SET_API_RETURN_HEADERS](state, headers) {
+    state.apiHeaders = headers;
+  },
+  /** Clear the API headers */
+  [types.CLEAR_API_RETURN_HEADERS](state) {
+    state.apiHeaders = null;
+  },
 };
 
 function asUrlParam(obj) {

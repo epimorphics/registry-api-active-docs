@@ -12,6 +12,8 @@ const {
   CLEAR_API_RESULT,
   SET_API_PAYLOAD,
   CLEAR_API_PAYLOAD,
+  SET_API_RETURN_HEADERS,
+  CLEAR_API_RETURN_HEADERS,
 } = mutations;
 
 describe('mutations', () => {
@@ -102,5 +104,19 @@ describe('mutations', () => {
     CLEAR_API_PAYLOAD(mockState);
 
     expect(mockState.apiPayload).to.equal(null);
+  });
+
+  it('should record the API headers when requested', () => {
+    const mockState = { apiHeaders: null };
+    SET_API_RETURN_HEADERS(mockState, '200 OK');
+
+    expect(mockState.apiHeaders).to.equal('200 OK');
+  });
+
+  it('should clear the API headers when requested', () => {
+    const mockState = { apiHeaders: '200 OK' };
+    CLEAR_API_RETURN_HEADERS(mockState);
+
+    expect(mockState.apiHeaders).to.equal(null);
   });
 });
