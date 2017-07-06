@@ -5,7 +5,7 @@ import ContentTypes from '@/models/content-types';
 export default {
   /** @return The selected result format as a string, defaulting to `'json'` */
   resultFormat() {
-    return this.$store.getters.apiResultFormat || 'json';
+    return this.$store.getters.apiResultFormat || 'json-ld';
   },
   /** @return The Mime-type corresponding to the selected `resultFormat` */
   resultMimeType() {
