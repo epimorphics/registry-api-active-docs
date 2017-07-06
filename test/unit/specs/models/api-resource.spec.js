@@ -12,7 +12,7 @@ describe('ApiResource', () => {
   describe('#absoluteURI()', () => {
     it('should return the absolute URI of the resource', () => {
       const r = new ApiResource(FIXTURE);
-      expect(r.absoluteURI()).to.equal('http://environment-registry.epimorphics.net/registry/def/test-area/');
+      expect(r.absoluteURI()).to.equal('http://environment-registry.epimorphics.net/registry/def/test/');
     });
   });
 
