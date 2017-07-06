@@ -52,4 +52,9 @@ export default class ApiMethod {
   requiresAuth() {
     return !!this.json.securedBy;
   }
+
+  /** @return {boolean} True if this operation expects set the return content type */
+  expectsContentType() {
+    return _.includes(['get', 'head'], this.action());
+  }
 }

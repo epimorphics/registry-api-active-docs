@@ -55,4 +55,11 @@ describe('ApiMethod', () => {
       expect(r.methods()[1].requiresAuth()).to.equal(true);
     });
   });
+
+  describe('#expectsContentType', () => {
+    it('should return false if a content type is not expected', () => {
+      expect(meth.expectsContentType()).to.equal(true);
+      expect(r.methods()[1].expectsContentType()).to.equal(false);
+    });
+  });
 });
