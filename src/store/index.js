@@ -62,11 +62,11 @@ export const mutations = {
   },
   /** Record the API headers */
   [types.SET_API_RETURN_HEADERS](state, headers) {
-    state.apiHeaders = headers;
+    state.apiReturnHeaders = headers;
   },
   /** Clear the API headers */
   [types.CLEAR_API_RETURN_HEADERS](state) {
-    state.apiHeaders = null;
+    state.apiReturnHeaders = null;
   },
 };
 
@@ -110,6 +110,7 @@ export default new Vuex.Store({
     queryParams: [],
     apiResult: null,
     apiPayload: null,
+    apiReturnHeaders: null,
   },
   mutations,
   getters,
