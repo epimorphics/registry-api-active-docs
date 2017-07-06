@@ -13,17 +13,18 @@
       </options-switch-compact>
     </p>
     <div class='c-payload-editor--codemirror'>
-      <codemirror v-model='payload' :options='payloadEditorOptions' ref='payloadEditor' />
+      <codemirror v-model='payload' :options='payloadEditorOptions' ref='payloadEditor' v-on:change='updatePayload'/>
     </div>
   </div>
 </template>
 
 <script>
   import ContentTypes from '@/models/content-types';
+  import { SET_API_PAYLOAD } from '@/store/mutation-types';
 
   export default {
     data: () => ({
-      payloadContentType: 'json',
+      payloadContentType: 'json-ld',
       contentTypes: ContentTypes.all(),
       payload: '',
       payloadEditorOptions: {
@@ -44,15 +45,24 @@
       editor() {
         return this.$refs.payloadEditor && this.$refs.payloadEditor.editor;
       },
+      apiPayload() {
+        return {
+          contentType: this.payloadContentType,
+          data: this.payload,
+        };
+      },
     },
     methods: {
       updateOption(contentType) {
         this.payloadContentType = contentType;
+        this.updatePayload();
+      },
+      updatePayload() {
+        this.$store.commit(SET_API_PAYLOAD, this.apiPayload);
       },
     },
     watch: {
       editorFormat(format) {
-        console.log(`setting format to ${format}`);
         this.editor.setOption('mode', format);
       },
     },
