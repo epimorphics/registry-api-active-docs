@@ -22,9 +22,11 @@
   import ContentTypes from '@/models/content-types';
   import { SET_API_PAYLOAD } from '@/store/mutation-types';
 
+  const DEFAULT_PAYLOAD_CONTENT_TYPE = 'json-ld';
+  
   export default {
     data: () => ({
-      payloadContentType: 'json-ld',
+      payloadContentType: DEFAULT_PAYLOAD_CONTENT_TYPE,
       contentTypes: ContentTypes.all(),
       payload: '',
       payloadEditorOptions: {
