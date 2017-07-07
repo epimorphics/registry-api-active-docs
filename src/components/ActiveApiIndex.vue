@@ -12,8 +12,30 @@
 </template>
 
 <script>
+  import _ from 'lodash';
   import * as mutations from '@/store/mutation-types';
   import ActiveApiIndexEntry from './ActiveApiIndexEntry';
+
+  const URL_QUERY_PARAM = 'url';
+  const METHOD_QUERY_PARAM = 'method';
+
+  /**
+   * Find an existing operation based on query parameters in the URL
+   * @param {object} query Given URL query parameters
+   */
+  function findSelectedOp(query, resources) {
+    const qUrl = query[URL_QUERY_PARAM];
+    const qMethod = query[METHOD_QUERY_PARAM];
+
+    if (qUrl && qMethod) {
+      const selectedResource = _.find(resources, resource => resource.relativeURI() === qUrl);
+      if (selectedResource) {
+        return _.find(selectedResource.methods(), method => method.action() === qMethod);
+      }
+    }
+
+    return null;
+  }
 
   export default {
     props: ['resources'],
@@ -28,6 +50,15 @@
         const resource = operation.resource();
 
         this.$store.commit(mutations.SET_API_ABSOLUTE_URI, resource.absoluteURI());
+      },
+    },
+    watch: {
+      resources() {
+        const selectedOperation = findSelectedOp(this.$route.query, this.resources);
+
+        if (selectedOperation) {
+          this.onSelectOperation(selectedOperation);
+        }
       },
     },
   };
