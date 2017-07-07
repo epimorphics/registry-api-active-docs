@@ -4,7 +4,7 @@
     <ul class='c-active-api-index--list'>
       <template v-for="resource in resources">
         <li v-for="method in resource.methods()" class='c-api-method'>
-          <active-api-index-entry v-bind:operation='method'> </active-api-index-entry>
+          <active-api-index-entry v-bind:operation='method' v-on:change='onSelectOperation'> </active-api-index-entry>
         </li>
       </template>
     </ul>
@@ -12,12 +12,23 @@
 </template>
 
 <script>
+  import * as mutations from '@/store/mutation-types';
   import ActiveApiIndexEntry from './ActiveApiIndexEntry';
 
   export default {
     props: ['resources'],
     components: {
       'active-api-index-entry': ActiveApiIndexEntry,
+    },
+    methods: {
+      onSelectOperation(operation) {
+        this.$store.commit(mutations.SELECT_OPERATION, operation);
+
+        this.$store.commit(mutations.CLEAR_API_PARAMS);
+        const resource = operation.resource();
+
+        this.$store.commit(mutations.SET_API_ABSOLUTE_URI, resource.absoluteURI());
+      },
     },
   };
 </script>

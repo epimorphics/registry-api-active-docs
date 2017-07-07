@@ -14,8 +14,6 @@
 </template>
 
 <script>
-  import * as mutations from '@/store/mutation-types';
-
   export default {
     computed: {
       isSelected() {
@@ -27,11 +25,7 @@
     methods: {
       /** User has clicked the button to select this operation */
       select() {
-        this.$store.commit(mutations.SELECT_OPERATION, this.operation);
-
-        const resource = this.operation.resource();
-        this.$store.commit(mutations.CLEAR_API_PARAMS);
-        this.$store.commit(mutations.SET_API_ABSOLUTE_URI, resource.absoluteURI());
+        this.$emit('change', this.operation);
       },
     },
   };
