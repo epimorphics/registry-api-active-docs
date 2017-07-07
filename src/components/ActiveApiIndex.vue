@@ -44,12 +44,20 @@
     },
     methods: {
       onSelectOperation(operation) {
-        this.$store.commit(mutations.SELECT_OPERATION, operation);
-
-        this.$store.commit(mutations.CLEAR_API_PARAMS);
         const resource = operation.resource();
 
+        this.$store.commit(mutations.CLEAR_API_PARAMS);
+        this.$store.commit(mutations.SELECT_OPERATION, operation);
         this.$store.commit(mutations.SET_API_ABSOLUTE_URI, resource.absoluteURI());
+
+        // push this new selection state to the current route
+        this.setCurrentRoute(resource.relativeURI(), operation.action());
+      },
+      setCurrentRoute(uri, methodName) {
+        this.$router.push({ query: {
+          [URL_QUERY_PARAM]: uri,
+          [METHOD_QUERY_PARAM]: methodName,
+        } });
       },
     },
     watch: {
