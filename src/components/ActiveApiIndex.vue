@@ -52,12 +52,19 @@
 
         // push this new selection state to the current route
         this.setCurrentRoute(resource.relativeURI(), operation.action());
+        this.clearCurrentResults();
       },
       setCurrentRoute(uri, methodName) {
         this.$router.push({ query: {
           [URL_QUERY_PARAM]: uri,
           [METHOD_QUERY_PARAM]: methodName,
         } });
+      },
+
+      /** Auxilliary method to clear the output components when the user state changes */
+      clearCurrentResults() {
+        this.$store.commit(mutations.CLEAR_API_RESULT);
+        this.$store.commit(mutations.CLEAR_API_RETURN_HEADERS);
       },
     },
     watch: {
