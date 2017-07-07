@@ -50,7 +50,7 @@ export const mutations = {
   },
   /** Clear the API result */
   [types.CLEAR_API_RESULT](state) {
-    state.apiResult = null;
+    state.apiResult = '';
   },
   /** Record the API payload */
   [types.SET_API_PAYLOAD](state, payload) {
@@ -58,7 +58,7 @@ export const mutations = {
   },
   /** Clear the API payload */
   [types.CLEAR_API_PAYLOAD](state) {
-    state.apiPayload = null;
+    state.apiPayload = '';
   },
   /** Record the API headers */
   [types.SET_API_RETURN_HEADERS](state, headers) {
@@ -66,7 +66,7 @@ export const mutations = {
   },
   /** Clear the API headers */
   [types.CLEAR_API_RETURN_HEADERS](state) {
-    state.apiReturnHeaders = null;
+    state.apiReturnHeaders = '';
   },
 };
 

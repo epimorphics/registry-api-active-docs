@@ -1,6 +1,10 @@
 /** Mixin to provide common interface to updating the store as a value changes */
 import _ from 'lodash';
-import { SELECT_API_PARAM, UNSELECT_API_PARAM } from '@/store/mutation-types';
+import { SELECT_API_PARAM,
+         UNSELECT_API_PARAM,
+         CLEAR_API_RESULT,
+         CLEAR_API_RETURN_HEADERS,
+       } from '@/store/mutation-types';
 
 export default {
   /** Event callback invoked when the gating option control for a parameter changes */
@@ -10,6 +14,8 @@ export default {
     } else {
       this.updateOption(this.optionValue());
     }
+
+    this.clearCurrentResults();
   },
 
   /** Event callback invoked when the value for an API parameter changes */
@@ -22,5 +28,13 @@ export default {
       this.$store.commit(UNSELECT_API_PARAM, this.apiParam.name());
       this.$store.commit(SELECT_API_PARAM, { [this.apiParam.name()]: value });
     }
+
+    this.clearCurrentResults();
+  },
+
+  /** Auxilliary method to clear the output components when the user state changes */
+  clearCurrentResults() {
+    this.$store.commit(CLEAR_API_RESULT);
+    this.$store.commit(CLEAR_API_RETURN_HEADERS);
   },
 };
