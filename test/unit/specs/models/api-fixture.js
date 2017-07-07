@@ -310,4 +310,4 @@ const API_FIXTURE =
   ]
 };
 
-export default {API_FIXTURE};
+export default API_FIXTURE;

@@ -1,5 +1,6 @@
 import ApiResource from '@/models/api-resource';
 import FIXTURE from './api-resource-fixture';
+import API_FIXTURE from './api-fixture';
 
 describe('ApiResource', () => {
   describe('#displayName()', () => {
@@ -27,6 +28,20 @@ describe('ApiResource', () => {
     it('should return a unique key for this resource', () => {
       const r = new ApiResource(FIXTURE);
       expect(r.key()).to.equal('/');
+    });
+  });
+
+  describe('#segmentVariables()', () => {
+    it('should return an empty array if no segment variables appear in the URL', () => {
+      const resources = API_FIXTURE.resources.map(r => new ApiResource(r));
+      const resource = resources[0];
+
+      expect(resource.apiSegmentVariables()).to.deep.equal([]);
+    });
+    it('should return an array of segment variables in the URL', () => {
+      const resources = API_FIXTURE.resources.map(r => new ApiResource(r));
+      const resource = resources[1];
+      expect(resource.apiSegmentVariables()).to.deep.equal(['version']);
     });
   });
 });
