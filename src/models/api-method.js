@@ -57,4 +57,9 @@ export default class ApiMethod {
   expectsContentType() {
     return _.includes(['get', 'head'], this.action());
   }
+
+  /** @return {boolean} True if this operation matches the given URL and method */
+  matches(url, actionName) {
+    return (this.resource().relativeURI() === url) && (this.action() === actionName);
+  }
 }

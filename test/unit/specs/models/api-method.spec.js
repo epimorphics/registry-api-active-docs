@@ -62,4 +62,14 @@ describe('ApiMethod', () => {
       expect(r.methods()[1].expectsContentType()).to.equal(false);
     });
   });
+
+  describe('#matches', () => {
+    it('should return true if given matching parameters', () => {
+      expect(meth.matches('/', 'get')).to.equal(true);
+    });
+    it('should return false if given non-matching parameters', () => {
+      expect(meth.matches('/foo', 'get')).to.equal(false);
+      expect(meth.matches('/', 'post')).to.equal(false);
+    });
+  });
 });
