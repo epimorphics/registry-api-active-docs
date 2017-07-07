@@ -68,6 +68,14 @@ export const mutations = {
   [types.CLEAR_API_RETURN_HEADERS](state) {
     state.apiReturnHeaders = '';
   },
+  /** Clear the segment variables map */
+  [types.CLEAR_API_SEGMENT_VARIABLES](state) {
+    state.apiSegmentVariables = {};
+  },
+  /** Set an API segment variable */
+  [types.SET_API_SEGMENT_VARIABLE](state, variable, value) {
+    state.apiSegmentVariables[variable] = value;
+  },
 };
 
 function asUrlParam(obj) {

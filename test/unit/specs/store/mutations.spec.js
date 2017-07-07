@@ -14,6 +14,8 @@ const {
   CLEAR_API_PAYLOAD,
   SET_API_RETURN_HEADERS,
   CLEAR_API_RETURN_HEADERS,
+  CLEAR_API_SEGMENT_VARIABLES,
+  SET_API_SEGMENT_VARIABLE,
 } = mutations;
 
 describe('mutations', () => {
@@ -89,7 +91,7 @@ describe('mutations', () => {
     const mockState = { apiResult: '{"foo": "bar"}' };
     CLEAR_API_RESULT(mockState);
 
-    expect(mockState.apiResult).to.equal(null);
+    expect(mockState.apiResult).to.equal('');
   });
 
   it('should record the API payload when requested', () => {
@@ -103,7 +105,7 @@ describe('mutations', () => {
     const mockState = { apiPayload: '{"foo": "bar"}' };
     CLEAR_API_PAYLOAD(mockState);
 
-    expect(mockState.apiPayload).to.equal(null);
+    expect(mockState.apiPayload).to.equal('');
   });
 
   it('should record the API headers when requested', () => {
@@ -117,6 +119,20 @@ describe('mutations', () => {
     const mockState = { apiReturnHeaders: '200 OK' };
     CLEAR_API_RETURN_HEADERS(mockState);
 
-    expect(mockState.apiReturnHeaders).to.equal(null);
+    expect(mockState.apiReturnHeaders).to.equal('');
+  });
+
+  it('should clear the API segment variables when requested', () => {
+    const mockState = { apiSegmentVariables: { foo: 'bar' } };
+    CLEAR_API_SEGMENT_VARIABLES(mockState);
+
+    expect(mockState.apiSegmentVariables).to.deep.equal({});
+  });
+
+  it('should set an API segment variable when requested', () => {
+    const mockState = { apiSegmentVariables: { foo: '42' } };
+    SET_API_SEGMENT_VARIABLE(mockState, 'foo', 'bar');
+
+    expect(mockState.apiSegmentVariables).to.deep.equal({ foo: 'bar' });
   });
 });
