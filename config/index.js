@@ -28,7 +28,6 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      // proxy all requests starting with /api to jsonplaceholder
       '/registry/': {
         target: 'http://environment-registry.epimorphics.net/',
         changeOrigin: true,
