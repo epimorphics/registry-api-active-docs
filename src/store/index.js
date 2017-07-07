@@ -73,8 +73,8 @@ export const mutations = {
     state.apiSegmentVariables = {};
   },
   /** Set an API segment variable */
-  [types.SET_API_SEGMENT_VARIABLE](state, variable, value) {
-    state.apiSegmentVariables[variable] = value;
+  [types.SET_API_SEGMENT_VARIABLE](state, varValue) {
+    _.assign(state.apiSegmentVariables, varValue);
   },
 };
 
@@ -119,6 +119,7 @@ export default new Vuex.Store({
     apiResult: null,
     apiPayload: null,
     apiReturnHeaders: null,
+    apiSegmentVariables: {},
   },
   mutations,
   getters,

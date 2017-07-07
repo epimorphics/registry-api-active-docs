@@ -21,6 +21,14 @@
         </code>
       </span>
     </p>
+    <template v-if='pathSegments.length > 0'>
+      <ul class='c-url-segment-variables'>
+        <li><p>URL segment variables:</p></li>
+        <li v-for='segment in pathSegments'>
+          <segment-variable-editor v-bind:segment='segment'></segment-variable-editor>
+        </li>
+      </ul>
+    </template>
     <h3>API parameters</h3>
     <el-row>
       <ul class='c-api-parameters-list u-list-unstyled'>
@@ -43,6 +51,7 @@
 <script>
   import ApiParameter from './ApiParameter';
   import ApiResultsViewer from './ApiResultsViewer';
+  import SegmentVariableEditor from './SegmentVariableEditor';
 
   export default {
     computed: {
@@ -52,10 +61,14 @@
       computedURI() {
         return this.$store.getters.apiEndpoint;
       },
+      pathSegments() {
+        return this.$store.state.currentOperation.resource().apiSegmentVariables();
+      },
     },
     components: {
       'api-parameter': ApiParameter,
       'api-results-viewer': ApiResultsViewer,
+      'segment-variable-editor': SegmentVariableEditor,
     },
   };
 </script>
@@ -75,5 +88,9 @@
     li {
       line-height: 2.5em;
     }
+  }
+
+  .c-url-segment-variables {
+    list-style: none;
   }
 </style>
