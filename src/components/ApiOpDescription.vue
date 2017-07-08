@@ -3,8 +3,7 @@
     <h2>
       {{ operation.displayName() }}
     </h2>
-    <p>
-      {{ operation.description() }}
+    <p v-html='operation.description()'>
     </p>
     <p>
       <span>HTTP</span>
