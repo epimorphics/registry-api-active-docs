@@ -74,7 +74,7 @@ export const mutations = {
   },
   /** Set an API segment variable */
   [types.SET_API_SEGMENT_VARIABLE](state, varValue) {
-    _.assign(state.apiSegmentVariables, varValue);
+    state.apiSegmentVariables = Object.assign({}, state.apiSegmentVariables, varValue);
   },
 };
 
