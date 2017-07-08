@@ -131,7 +131,7 @@ describe('mutations', () => {
 
   it('should set an API segment variable when requested', () => {
     const mockState = { apiSegmentVariables: { foo: '42' } };
-    SET_API_SEGMENT_VARIABLE(mockState, 'foo', 'bar');
+    SET_API_SEGMENT_VARIABLE(mockState, { foo: 'bar' });
 
     expect(mockState.apiSegmentVariables).to.deep.equal({ foo: 'bar' });
   });

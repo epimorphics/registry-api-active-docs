@@ -88,14 +88,34 @@ function asUrlParam(obj) {
   return `${k}=${encodeURIComponent(v)}`;
 }
 
+/**
+ * Return a version of the given string in which all `:{var}`
+ * sequences are replaced by any defined values in the table
+ * of segment variables.
+ *
+ * @param {string} uri The URI to perform substitutions on
+ * @param {object} vars The current value of any variables
+ * @return {string} URI with substitutions applied
+ */
+function withSubstitutions(uri, vars) {
+  let substUri = uri;
+
+  _.each(vars, (v, k) => {
+    substUri = substUri.replace(`:{${k}}`, v);
+  });
+
+  return substUri;
+}
+
 export const getters = {
   /** @return The current API endpoint, assembled from the various pieces */
   apiEndpoint(store) {
     if (store.absoluteURI) {
+      const substitutedURI = withSubstitutions(store.absoluteURI, store.apiSegmentVariables);
       const queryParams = _.map(store.queryParams, asUrlParam).join('&');
       const queryPart = _.isEmpty(queryParams) ? '' : `?${queryParams}`;
 
-      return `${store.absoluteURI}${queryPart}`;
+      return `${substitutedURI}${queryPart}`;
     }
 
     return '';
