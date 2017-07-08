@@ -65,6 +65,7 @@
       clearCurrentResults() {
         this.$store.commit(mutations.CLEAR_API_RESULT);
         this.$store.commit(mutations.CLEAR_API_RETURN_HEADERS);
+        this.$store.commit(mutations.CLEAR_API_SEGMENT_VARIABLES);
       },
     },
     watch: {
