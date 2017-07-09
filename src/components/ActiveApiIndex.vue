@@ -1,6 +1,6 @@
 <template>
   <div class='c-active-api-index'>
-    <h2>API operations</h2>
+    <h2>API examples</h2>
     <ul class='c-active-api-index--list'>
       <template v-for="resource in resources">
         <li v-for="method in resource.methods()" class='c-api-method'>
