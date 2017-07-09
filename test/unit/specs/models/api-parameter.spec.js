@@ -49,4 +49,24 @@ describe('ApiParameter', () => {
       expect(param.name()).to.equal('non-member-properties');
     });
   });
+
+  describe('#hasDefaultValue', () => {
+    it('should return true if a default value is specified', () => {
+      const notFormatParam = _.find(meth.apiParameters(), p => p.name() !== '_format');
+      expect(notFormatParam.hasDefaultValue()).to.equal(false);
+
+      const formatParam = _.find(meth.apiParameters(), p => p.name() === '_format');
+      expect(formatParam.hasDefaultValue()).to.equal(true);
+    });
+  });
+
+  describe('#defaultValue', () => {
+    it('should return a default value if specified', () => {
+      const notFormatParam = _.find(meth.apiParameters(), p => p.name() !== '_format');
+      expect(_.isUndefined(notFormatParam.defaultValue())).to.equal(true);
+
+      const formatParam = _.find(meth.apiParameters(), p => p.name() === '_format');
+      expect(formatParam.defaultValue()).to.equal('json-ld');
+    });
+  });
 });

@@ -86,7 +86,8 @@ const FIXTURE =
             "json-ld",
             "ttl",
             "rdf"
-          ]
+          ],
+          "default": "json-ld"
         },
         "std:code": {
           "name": "std:code",

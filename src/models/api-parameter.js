@@ -39,4 +39,14 @@ export default class ApiParameter {
   name() {
     return this.json.name;
   }
+
+  /** @return {boolean} True if this parameter has a default value */
+  hasDefaultValue() {
+    return !!this.defaultValue();
+  }
+
+  /** @return {any} The default value for the parameter, if defined */
+  defaultValue() {
+    return this.json.default;
+  }
 }
