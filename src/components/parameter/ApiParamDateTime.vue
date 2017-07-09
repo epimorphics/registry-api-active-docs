@@ -24,6 +24,9 @@
         return d && moment(d).toISOString();
       },
     },
+    mounted() {
+      this.checkDefaultValue();
+    },
   };
 </script>
 

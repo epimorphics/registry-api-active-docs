@@ -32,6 +32,14 @@ export default {
     this.clearCurrentResults();
   },
 
+  /** Check to see if this param has a default value, and select it if so */
+  checkDefaultValue() {
+    if (this.apiParam.hasDefaultValue()) {
+      this.checked = true;
+      this.updateOption(this.apiParam.defaultValue());
+    }
+  },
+
   /** Auxilliary method to clear the output components when the user state changes */
   clearCurrentResults() {
     this.$store.commit(CLEAR_API_RESULT);

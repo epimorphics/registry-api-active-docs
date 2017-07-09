@@ -22,6 +22,9 @@
         return this.value;
       },
     },
+    mounted() {
+      this.checkDefaultValue();
+    },
   };
 </script>
 

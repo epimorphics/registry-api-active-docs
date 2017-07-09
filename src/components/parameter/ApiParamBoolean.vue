@@ -18,6 +18,9 @@
       ...updateOptionMixin,
       optionValue: () => true,
     },
+    mounted() {
+      this.checkDefaultValue();
+    },
   };
 </script>
 

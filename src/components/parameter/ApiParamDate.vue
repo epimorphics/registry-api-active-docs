@@ -24,6 +24,9 @@
         return d && moment(d).format('YYYY-MM-DD');
       },
     },
+    mounted() {
+      this.checkDefaultValue();
+    },
   };
 </script>
 
