@@ -25,6 +25,19 @@
         <div class='u-department-colour'></div>
       </el-col>
     </el-row>
+    <el-row>
+      <el-col :lg='{span: 20, offset: 2}' :md='{span: 24, offset: 0}'>
+        <div class='c-phase-identifier'>
+          <p>
+            <strong class="c-phase-identifier--tag">BETA</strong>
+            <span>
+              This is a trial service &ndash; your
+              <a href='mailto:todo'>feedback</a> will help us to improve it.
+            </span>
+          </p>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -35,6 +48,8 @@
 </script>
 
 <style lang='scss'>
+  @import '~govuk_frontend_toolkit/stylesheets/design-patterns/alpha-beta';
+
   .c-env-registry-header {
     color: white;
     background-color: black;
@@ -61,6 +76,14 @@
       a {
         text-decoration: none;
       }
+    }
+  }
+
+  .c-phase-identifier {
+    @include phase-banner();
+
+    &--tag {
+      @include phase-tag();
     }
   }
 </style>
