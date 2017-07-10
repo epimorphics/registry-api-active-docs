@@ -43,7 +43,7 @@
       'active-api-index-entry': ActiveApiIndexEntry,
     },
     methods: {
-      onSelectOperation(operation) {
+      onSelectOperation(operation, preserveURL) {
         const resource = operation.resource();
 
         this.$store.commit(mutations.CLEAR_API_PARAMS);
@@ -51,8 +51,10 @@
         this.$store.commit(mutations.SET_API_ABSOLUTE_URI, resource.absoluteURI());
 
         // push this new selection state to the current route
-        this.setCurrentRoute(resource.relativeURI(), operation.action());
-        this.clearCurrentResults();
+        if (!preserveURL) {
+          this.setCurrentRoute(resource.relativeURI(), operation.action());
+          this.clearCurrentResults();
+        }
       },
       setCurrentRoute(uri, methodName) {
         this.$router.push({ query: {
@@ -73,7 +75,7 @@
         const selectedOperation = findSelectedOp(this.$route.query, this.resources);
 
         if (selectedOperation) {
-          this.onSelectOperation(selectedOperation);
+          this.onSelectOperation(selectedOperation, true);
         }
       },
     },

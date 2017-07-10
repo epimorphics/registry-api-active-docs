@@ -26,6 +26,7 @@
 
 <script>
   import ApiModelLoader from '@/services/api-model-loader';
+  import loadExamples from '@/services/examples-loader';
   import ActiveApiIndex from '@/components/ActiveApiIndex';
   import ApiOpDescription from '@/components/ApiOpDescription';
   import EnvRegistryHeader from '@/components/EnvRegistryHeader';
@@ -47,11 +48,14 @@
       },
     },
     mounted() {
+      // load the RAML document
       ApiModelLoader
         .load()
         .then((api) => {
           this.$store.commit(LOAD_API_MODEL, api);
         });
+
+      loadExamples({ store: this.$store });
     },
   };
 </script>

@@ -47,6 +47,9 @@
       editor() {
         return this.$refs.payloadEditor && this.$refs.payloadEditor.editor;
       },
+      examples() {
+        return this.$store.state.examples;
+      },
     },
     methods: {
       updateOption(contentType) {
@@ -64,11 +67,30 @@
 
         this.$store.commit(SET_API_PAYLOAD, payload);
       },
+      checkForURLPayloadExample() {
+        const queryParams = this.$route.query;
+        if (queryParams.examplePayload) {
+          const examplePayload = this.$store.state.examples[queryParams.examplePayload];
+
+          if (examplePayload) {
+            this.payload = examplePayload.example;
+            this.payloadContentType = examplePayload.contentType;
+          }
+        }
+      },
     },
     watch: {
+      /** User has changed the payload editor content-type */
       editorFormat(format) {
         this.editor.setOption('mode', format);
       },
+      /** If the loaded examples change, check to see if we need to update the payload editor */
+      examples() {
+        this.checkForURLPayloadExample();
+      },
+    },
+    mounted() {
+      this.checkForURLPayloadExample();
     },
   };
 </script>

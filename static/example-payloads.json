@@ -1,0 +1,12 @@
+{
+  "register.json": {
+    "example": "example register.json file will go here",
+    "contentTypeMime": "application/ld+json",
+    "contentType": "json-ld"
+  },
+  "register.csv": {
+    "example": "example register CSV file will go here",
+    "contentTypeMime": "text/csv",
+    "contentType": "csv"
+  }
+}
