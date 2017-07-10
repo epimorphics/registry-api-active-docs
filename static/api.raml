@@ -13,11 +13,13 @@ securitySchemes:
     type: Basic Authentication
 /:
   get:
-    displayName: List the register
+    displayName: List the root register
     description: |
-      Returns the JSON description of the register that is used for testing and demos.
-      <p>This is a second example paragraph, showing that <strong>html markup</strong>
-      works.</p>
+      Returns a description of the top-level of the register
+      that is used for testing and training purposes.
+      <p>Please note that the contents of this test register <strong>are
+      not permanent</strong>, and <strong>may be reset</strong> at
+      regular intervals.</p>
     queryParameters:
       non-member-properties:
         required: false
@@ -65,7 +67,6 @@ securitySchemes:
           - rdf
         displayName: Format
         description: Specifies the return encoding of the results
-        default: json-ld
       std:code:
         type: string
         required: false
@@ -79,22 +80,22 @@ securitySchemes:
       min-std:dateFrom:
         type: date-only
         required: false
-        displayName: Filter by earliest date-from
+        displayName: Filter by earliest dateFrom
         description: Only return those entries whose valid-from date is after the given date
       max-std:dateFrom:
         type: date-only
         required: false
-        displayName: Filter by latest date-from
+        displayName: Filter by latest dateFrom
         description: Only return those entries whose valid-from date is before the given date
       min-std:dateTo:
         type: date-only
         required: false
-        displayName: Filter by earliest date-to
+        displayName: Filter by earliest dateTo
         description: Only return those entries whose valid-to date is after the given date
       max-std:dateTo:
         type: date-only
         required: false
-        displayName: Filter by latest date-to
+        displayName: Filter by latest dateTo
         description: Only return those entries whose valid-to date is before the given date
     responses:
       200:
@@ -102,14 +103,151 @@ securitySchemes:
           application/json:
 
   post:
-    displayName: Add to the register
-    description: Register a new item in the register
+    displayName: Create a new register
+    description: |
+      Register a new register in the root register used for testing and training.
+      <p>Please note that the contents of this test register <strong>are
+      not permanent</strong>, and <strong>may be reset</strong> at
+      regular intervals.</p>
     securedBy: [basic]
-/:{version}:
+
+/:{register}:
   get:
-    displayName: List a specific version of the register
-    description: Returns a JSON description of the identified version of the register
+    displayName: List a named register
+    description: |
+      Returns a description of the named register within
+      the root register that is used for testing and training purposes.
+      <p>Please note that the contents of this test register <strong>are
+      not permanent</strong>, and <strong>may be reset</strong> at
+      regular intervals.</p>
+    queryParameters:
+      non-member-properties:
+        required: false
+        type: boolean
+        displayName: Return metadata only
+        description: Only return metadata for the register, without listing members
+      firstPage:
+        required: false
+        type: boolean
+        displayName: Return first page of results
+        description: Equivalent to _page=0
+      _page:
+        required: false
+        type: number
+        displayName: Page
+        description: Return the given page of results
+      status:
+        required: false
+        type: string
+        enum:
+          - any
+          - accepted
+        displayName: Status filter
+        description: Only return register items whose status matches the given value
+      _view:
+        required: false
+        type: string
+        enum:
+          - with_metadata
+          - version_list
+        displayName: View of the data
+        description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
+      versionAt:
+        required: false
+        type: datetime-only
+        displayName: Version at
+        description: Specifies the version of the register that was in effect at the given XSD DateTime
+      _format:
+        required: false
+        type: string
+        enum:
+          - csv
+          - json-ld
+          - ttl
+          - rdf
+        displayName: Format
+        description: Specifies the return encoding of the results
+      std:code:
+        type: string
+        required: false
+        displayName: Filter by registry entry code
+        description: Only return those entries matching the given entry code
+      std:status:
+        type: string
+        required: false
+        displayName: Filter by registry entry status code
+        description: Only return those entries that have the given status code
+      min-std:dateFrom:
+        type: date-only
+        required: false
+        displayName: Filter by earliest dateFrom
+        description: Only return those entries whose valid-from date is after the given date
+      max-std:dateFrom:
+        type: date-only
+        required: false
+        displayName: Filter by latest dateFrom
+        description: Only return those entries whose valid-from date is before the given date
+      min-std:dateTo:
+        type: date-only
+        required: false
+        displayName: Filter by earliest dateTo
+        description: Only return those entries whose valid-to date is after the given date
+      max-std:dateTo:
+        type: date-only
+        required: false
+        displayName: Filter by latest dateTo
+        description: Only return those entries whose valid-to date is before the given date
     responses:
       200:
         body:
           application/json:
+  post:
+    displayName: Add a new entry to a registry
+    description: |
+      Add a new entry to the given register.
+      <p>Please note that the contents of this test register <strong>are
+      not permanent</strong>, and <strong>may be reset</strong> at
+      regular intervals.</p>
+    securedBy: [basic]
+  put:
+    displayName: Replace an entry in a registry
+    description: |
+      Update an entry in a registry by replacing the current definition of the
+      entry by a new definition.
+      <p>Please note that the contents of this test register <strong>are
+      not permanent</strong>, and <strong>may be reset</strong> at
+      regular intervals.</p>
+    securedBy: [basic]
+  patch:
+    displayName: Update an entry in a registry
+    description: |
+      Update an entry in a registry to change some of the properties by
+      uploading a partial entity description.
+      <p>Please note that the contents of this test register <strong>are
+      not permanent</strong>, and <strong>may be reset</strong> at
+      regular intervals.</p>
+    securedBy: [basic]
+
+/:{register}/:{entity}:
+  get:
+    displayName: Fetch a single entry
+    description: |
+      Fetch a single entity from the given register.
+    queryParameters:
+      _format:
+        required: false
+        type: string
+        enum:
+          - csv
+          - json-ld
+          - ttl
+          - rdf
+        displayName: Format
+        description: Specifies the return encoding of the results
+      _view:
+        required: false
+        type: string
+        enum:
+          - with_metadata
+        displayName: Optionally return metadata
+        description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
