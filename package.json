@@ -1,6 +1,6 @@
 {
   "name": "registry-api-active-docs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Simple active viewer for a registry API, described in RAML",
   "author": "ian.dickinson@epimorphics.com",
   "private": true,
