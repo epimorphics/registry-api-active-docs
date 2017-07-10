@@ -34,6 +34,8 @@
 
   import { LOAD_API_MODEL } from '@/store/mutation-types';
 
+  import { awaitDevtools } from '../lib/await-dev-tools';
+
   export default {
     components: {
       'active-api-index': ActiveApiIndex,
@@ -48,14 +50,17 @@
       },
     },
     mounted() {
-      // load the RAML document
-      ApiModelLoader
-        .load()
-        .then((api) => {
-          this.$store.commit(LOAD_API_MODEL, api);
-        });
+      awaitDevtools()
+        .then(() => {
+          // load the RAML document
+          ApiModelLoader
+          .load()
+          .then((api) => {
+            this.$store.commit(LOAD_API_MODEL, api);
+          });
 
-      loadExamples({ store: this.$store });
+          loadExamples({ store: this.$store });
+        });
     },
   };
 </script>
