@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  import _ from 'lodash';
   import updateOptionMixin from './update-option-mixin';
 
   export default {
@@ -20,6 +21,11 @@
       ...updateOptionMixin,
       optionValue() {
         return this.value;
+      },
+
+      /** Parse string values to numbers */
+      parseValue(value) {
+        return _.toInteger(value);
       },
     },
     mounted() {

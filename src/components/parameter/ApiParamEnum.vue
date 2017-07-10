@@ -3,7 +3,7 @@
     <el-checkbox v-model='checked' v-on:change='enableOption'>{{ apiParam.displayName() }}</el-checkbox>
     <options-switch-compact
       v-bind:options='apiParam.enumValues()'
-      v-bind:initialValue='apiParam.defaultValue()'
+      v-bind:initialValue='value'
       v-bind:disabled='!checked'
       v-bind:size='"small"'
       v-on:change='updateOption'

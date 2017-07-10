@@ -25,6 +25,7 @@ export default {
                        (_.isString(value) && _.isEmpty(value)));
 
     if (this.checked && hasValue) {
+      this.$set(this, 'value', value);
       this.$store.commit(UNSELECT_API_PARAM, this.apiParam.name());
       this.$store.commit(SELECT_API_PARAM, { [this.apiParam.name()]: value });
     }
@@ -34,10 +35,21 @@ export default {
 
   /** Check to see if this param has a default value, and select it if so */
   checkDefaultValue() {
-    if (this.apiParam.hasDefaultValue()) {
+    const queryParams = this.$route.query;
+
+    const defaultValue =
+      this.apiParam.defaultValue() ||
+      queryParams[this.apiParam.name()];
+
+    if (defaultValue) {
       this.checked = true;
-      this.updateOption(this.apiParam.defaultValue());
+      this.updateOption(this.parseValue(defaultValue));
     }
+  },
+
+  /** Default value parse is just to return the string */
+  parseValue(value) {
+    return value;
   },
 
   /** Auxilliary method to clear the output components when the user state changes */
