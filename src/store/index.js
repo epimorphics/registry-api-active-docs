@@ -15,6 +15,9 @@ export const mutations = {
   [types.LOAD_API_MODEL](state, model) {
     state.apiModel = model;
   },
+  [types.LOAD_EXAMPLES](state, examples) {
+    state.examples = examples;
+  },
   /** User has selected an operation within a resource */
   [types.SELECT_OPERATION](state, operation) {
     state.currentOperation = operation;
@@ -132,6 +135,7 @@ export default new Vuex.Store({
   strict: debug,
   state: {
     apiModel: {},
+    examples: {},
     currentOperation: null,
     currentResource: null,
     absoluteURI: null,

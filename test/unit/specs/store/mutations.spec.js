@@ -2,6 +2,7 @@ import { mutations } from '@/store/index';
 
 const {
   LOAD_API_MODEL,
+  LOAD_EXAMPLES,
   SELECT_OPERATION,
   SET_API_ABSOLUTE_URI,
   SELECT_API_PARAM,
@@ -23,6 +24,12 @@ describe('mutations', () => {
     const mockState = { apiModel: {} };
     LOAD_API_MODEL(mockState, { thisModel: 'isFake' });
     expect(mockState.apiModel.thisModel).to.equal('isFake');
+  });
+
+  it('should update the store with a new examples collection', () => {
+    const mockState = { examples: {} };
+    LOAD_EXAMPLES(mockState, { example1: 'isFake' });
+    expect(mockState.examples.example1).to.equal('isFake');
   });
 
   it('should update the store with a new selection for the operation', () => {
