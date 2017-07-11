@@ -73,7 +73,7 @@
     }
 
     &--name {
-      padding-right: 30px;
+      padding-right: 40px;
       font-size: 14px;
     }
 
