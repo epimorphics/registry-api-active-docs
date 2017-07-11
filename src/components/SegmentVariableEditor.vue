@@ -23,7 +23,13 @@
 </script>
 
 <style lang='scss'>
+  @import "../styles/_common.scss";
+
   .c-segment-variable-editor {
     margin-bottom: 10px;
+
+    .el-input-group__prepend {
+      color: $black;
+    }
   }
 </style>
