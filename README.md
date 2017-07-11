@@ -2,7 +2,7 @@
 
 A simple documentation viewer for developers working with the API
 to the environment codes registry. The API is
-[http://environment-registry.epimorphics.net/registry/ui/api-documentation](documented in detail)
+[documented in detail](http://environment-registry.epimorphics.net/registry/ui/api-documentation
 by web pages. This application presents a selection of the actions available
 through the API in a form that developers can:
 
@@ -11,7 +11,7 @@ through the API in a form that developers can:
 
 ## Background
 
-The API is documented by a [https://raml.org/](RAML) file. RAML is an API
+The API is documented by a [RAML](https://raml.org/) file. RAML is an API
 description and modelling language, designed for documenting and testing RESTful
 APIs.  We have not yet used the facilities in RAML and JSON-Schema to fully
 document the input and output document formats, the current state focuses on
