@@ -42,6 +42,25 @@ register, please edit `static/auth.json`. <strong>Developer note</strong>
 to be present in `./static` to run any of the updating operations. You need
 to obtain or create a copy of the file locally.
 
+## Deep linking to registry entries
+
+The primary navigation for users is to choose operations from the LH navigation
+menu, which lists the main API operations. In order to provide convenient link
+targets for linking to the API tool from other documentation, there are two
+additional deep-linking affordances available via the app URL:
+
+- default values of API parameters can be set on the API app URL. For example, adding
+`&_view=with_metadata` to the link will ensure that the `_view` parameter is
+enabled, and has the given default value selected
+
+- an example payload can be added to the payload editor by adding a URL
+parameter, e.g: `&examplePayload=entry.json`. The key `entry.json` should correspond
+to one of the entries in the `example-payloads.json` file mentioned above.
+
+*Note*: when experimenting with deep linking via the URL that Vue.js uses by
+default a `#`-based URL navigation scheme. Therefore it's necessary to both edit
+the URL bar, _and_ refresh the browser page.
+
 ## Build Setup
 
 ``` bash
