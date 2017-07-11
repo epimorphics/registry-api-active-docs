@@ -1,6 +1,6 @@
 <template>
   <div class='c-api-param c-api-param--string'>
-    <el-checkbox v-model='checked' v-on:change='enableOption'>{{ apiParam.displayName() }}</el-checkbox>
+    <el-checkbox v-model='checked' v-on:change='enableOption' v-html='apiParam.displayName()'></el-checkbox>
     <el-input v-model='value' size='small' v-bind:disabled='!checked' v-on:change='updateOption'></el-input>
   </div>
 </template>
