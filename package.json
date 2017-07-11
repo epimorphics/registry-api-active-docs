@@ -12,7 +12,9 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "element-theme": "et -c src/styles/element-variables.css -o src/styles/theme"
+    "element-theme": "et -c src/styles/element-variables.css -o src/styles/theme",
+    "package": "npm run build && tar -czf ea-registry-active-api-docs.tgz --directory=./dist .",
+    "deploy": "aws --profile=defra s3 cp ea-registry-active-api-docs.tgz s3://reg-dms-deploy/api-tooling/"
   },
   "dependencies": {
     "axios": "^0.16.2",
