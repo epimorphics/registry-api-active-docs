@@ -23,7 +23,7 @@
     <template v-if='pathSegments.length > 0'>
       <ul class='c-url-segment-variables'>
         <li><p>URL segment variables:</p></li>
-        <li v-for='segment in pathSegments'>
+        <li v-for='segment in pathSegments' v-bind:key='`${operation.key()}-${segment}`'>
           <segment-variable-editor v-bind:segment='segment'></segment-variable-editor>
         </li>
       </ul>
