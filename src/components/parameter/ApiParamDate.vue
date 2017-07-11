@@ -1,6 +1,6 @@
 <template>
   <div class='c-api-param c-api-param--date'>
-    <el-checkbox v-model='checked' v-on:change='enableOption'>{{ apiParam.displayName() }}</el-checkbox>
+    <el-checkbox v-model='checked' v-on:change='enableOption'><span v-html='apiParam.displayName()' /></el-checkbox>
     <el-date-picker v-model='value' type='date' size='small' v-bind:disabled='!checked' v-on:change='updateOption'></el-date-picker>
   </div>
 </template>
