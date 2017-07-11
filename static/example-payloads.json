@@ -1,11 +1,26 @@
 {
   "register.json": {
-    "example": "example register.json file will go here",
+    "example": "{\n \"@context\" : \"http://environment.data.gov.uk/registry/system/json-context\",\n \n \"@id\"             : \"REPLACE-ME\",\n \"@type\"           : \"reg:Register\",\n \"rdfs:label\"      : \"Example register\",\n \"dct:description\" : \"Test example register\",\n \n \"reg:owner\"       : {\"@id\": \"http://environment.data.gov.uk/registry/structure/org/environment-agency\"},\n \"reg:category\"    : {\"@id\" : \"http://environment.data.gov.uk/registry/structure/category/System\"},\n \"env-ui:entityType\" : {\"@id\" : \"http://environment.data.gov.uk/registry/structure/entity-type/Abstract\"}\n }\n",
     "contentTypeMime": "application/ld+json",
     "contentType": "json-ld"
   },
   "register.csv": {
     "example": "example register CSV file will go here",
+    "contentTypeMime": "text/csv",
+    "contentType": "csv"
+  },
+  "entry.json": {
+    "example": "{\n \"@context\" : \"http://environment.data.gov.uk/registry/system/json-context\",\n \"@id\"             : \"eg1\",\n \"@type\"           : \"skos:Concept\",\n \"rdfs:label\"      : \"Example 1\",\n \"dct:description\" : \"An example\",\n \"std:code\"        : 1\n }\n",
+    "contentTypeMime": "application/ld+json",
+    "contentType": "json-ld"
+  },
+  "edit.csv": {
+    "example": "@id,dct:description,rdf:type,rdfs:label,std:code\n <http://environment.data.gov.uk/registry/def/test/egreg/eg1>,A modified example,skos:Concept,Example 1,1\n <http://environment.data.gov.uk/registry/def/test/egreg/eg2>,Another example,skos:Concept,Example 2,2\n",
+    "contentTypeMime": "text/csv",
+    "contentType": "csv"
+  },
+  "edit-modified.csv": {
+    "example": "@id,dct:description,rdf:type,rdfs:label,std:code\n <http://environment.data.gov.uk/registry/def/test/egreg/eg1>,An updated example,skos:Concept,Example 1,1\n <http://environment.data.gov.uk/registry/def/test/egreg/eg2>,Another updated example,skos:Concept,Example 2,2\n",
     "contentTypeMime": "text/csv",
     "contentType": "csv"
   }

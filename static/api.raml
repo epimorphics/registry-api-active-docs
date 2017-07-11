@@ -111,6 +111,31 @@ securitySchemes:
       regular intervals.</p>
     securedBy: [basic]
 
+
+/:{register}/:{entity}:
+  get:
+    displayName: Fetch a single entry
+    description: |
+      Fetch a single entity from the given register.
+    queryParameters:
+      _format:
+        required: false
+        type: string
+        enum:
+          - csv
+          - json-ld
+          - ttl
+          - rdf
+        displayName: Format
+        description: Specifies the return encoding of the results
+      _view:
+        required: false
+        type: string
+        enum:
+          - with_metadata
+        displayName: Optionally return metadata
+        description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
+
 /:{register}:
   get:
     displayName: List a named register
@@ -209,6 +234,12 @@ securitySchemes:
       not permanent</strong>, and <strong>may be reset</strong> at
       regular intervals.</p>
     securedBy: [basic]
+    queryParameters:
+      edit:
+        required: false
+        type: boolean
+        displayName: Update multiple entries at once (the <code>'edit'</code> operation, requires CSV)
+        description: Add or update multiple entries, and their status, in one operation
   put:
     displayName: Replace an entry in a registry
     description: |
@@ -227,27 +258,3 @@ securitySchemes:
       not permanent</strong>, and <strong>may be reset</strong> at
       regular intervals.</p>
     securedBy: [basic]
-
-/:{register}/:{entity}:
-  get:
-    displayName: Fetch a single entry
-    description: |
-      Fetch a single entity from the given register.
-    queryParameters:
-      _format:
-        required: false
-        type: string
-        enum:
-          - csv
-          - json-ld
-          - ttl
-          - rdf
-        displayName: Format
-        description: Specifies the return encoding of the results
-      _view:
-        required: false
-        type: string
-        enum:
-          - with_metadata
-        displayName: Optionally return metadata
-        description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
