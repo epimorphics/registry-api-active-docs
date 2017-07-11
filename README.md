@@ -2,7 +2,7 @@
 
 A simple documentation viewer for developers working with the API
 to the environment codes registry. The API is
-[documented in detail](http://environment-registry.epimorphics.net/registry/ui/api-documentation
+[documented in detail](http://environment-registry.epimorphics.net/registry/ui/api-documentation)
 by web pages. This application presents a selection of the actions available
 through the API in a form that developers can:
 
