@@ -57,6 +57,10 @@
     padding: 0 0 0 20px;
     margin: 0;
     position: relative;
+
+    &:hover {
+      background-color: $yellow;
+    }
   }
 
   .c-api-operation {
@@ -75,10 +79,6 @@
     &--name {
       padding-right: 40px;
       font-size: 14px;
-    }
-
-    &:hover {
-      background-color: lighten($yellow, 25%);
     }
   }
 
