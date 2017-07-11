@@ -1,6 +1,6 @@
 <template>
   <div class='c-api-param c-api-param--enum'>
-    <el-checkbox v-model='checked' v-on:change='enableOption' v-html='apiParam.displayName()'></el-checkbox>
+    <el-checkbox v-model='checked' v-on:change='enableOption'>{{ apiParam.displayName() }}</el-checkbox>
     <options-switch-compact
       v-bind:options='apiParam.enumValues()'
       v-bind:initialValue='value'

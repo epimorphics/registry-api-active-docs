@@ -1,6 +1,6 @@
 <template>
   <div class='c-api-param c-api-param--boolean'>
-    <el-checkbox v-model='checked' size='small' v-on:change='enableOption' v-html='apiParam.displayName()'></el-checkbox>
+    <el-checkbox v-model='checked' size='small' v-on:change='enableOption'>{{ apiParam.displayName() }}</el-checkbox>
   </div>
 </template>
 
