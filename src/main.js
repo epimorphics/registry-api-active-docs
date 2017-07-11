@@ -13,13 +13,23 @@ import 'vue-awesome/icons';
 import FontAwesomeIcon from 'vue-awesome/components/Icon';
 import VueCodeMirror from 'vue-codemirror';
 
+// Sentry.io monitoring
+import Raven from 'raven-js';
+import RavenVue from 'raven-js/plugins/vue';
+
 import App from './App';
 import router from './router';
 import store from './store/index';
 
 import OptionsSwitchCompact from './components/OptionsSwitchCompact';
 
-// plugins
+// configure Sentry.io
+Raven
+    .config('https://f911714b8c4748dc9409505250557384@sentry.io/190336')
+    .addPlugin(RavenVue, Vue)
+    .install();
+
+// Vue plugins
 Vue.config.productionTip = false;
 Vue.use(ElementUI, { locale });
 Vue.use(VueCodeMirror);

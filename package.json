@@ -27,6 +27,7 @@
     "moment": "^2.18.1",
     "query-string": "^4.3.4",
     "raml-1-parser-browser": "^1.1.23",
+    "raven-js": "^3.16.1",
     "typescript": "^2.3.4",
     "vue": "^2.3.3",
     "vue-awesome": "^2.3.1",
