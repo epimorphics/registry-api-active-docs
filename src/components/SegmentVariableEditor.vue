@@ -1,5 +1,5 @@
 <template>
-  <el-input v-model='value' size='small' v-on:change='onChange'>
+  <el-input v-model='value' size='small' v-on:change='onChange' class='c-segment-variable-editor'>
     <template slot='prepend'><code>{{ segment }} = </code></template>
   </el-input>
 </template>
@@ -23,4 +23,7 @@
 </script>
 
 <style lang='scss'>
+  .c-segment-variable-editor {
+    margin-bottom: 10px;
+  }
 </style>
