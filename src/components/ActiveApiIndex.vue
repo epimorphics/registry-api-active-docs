@@ -47,6 +47,7 @@
         const resource = operation.resource();
 
         this.$store.commit(mutations.CLEAR_API_PARAMS);
+        this.$store.commit(mutations.CLEAR_API_PAYLOAD);
         this.$store.commit(mutations.SELECT_OPERATION, operation);
         this.$store.commit(mutations.SET_API_ABSOLUTE_URI, resource.absoluteURI());
 

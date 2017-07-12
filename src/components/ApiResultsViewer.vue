@@ -1,6 +1,6 @@
 <template>
   <section id='results-view' class='c-api-results-view'>
-    <api-payload-editor v-if='expectsPayload'></api-payload-editor>
+    <api-payload-editor v-if='expectsPayload' v-bind:key='key'></api-payload-editor>
 
     <h3>API preview</h3>
     <div class='c-api-results-view--uri'>
@@ -44,6 +44,9 @@
       },
       expectsPayload() {
         return this.$store.state.currentOperation.expectsPayload();
+      },
+      key() {
+        return this.$store.state.currentOperation.key();
       },
     },
     components: {
