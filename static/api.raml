@@ -218,9 +218,10 @@ securitySchemes:
         body:
           application/json:
   post:
-    displayName: Add a new entry to a register
+    displayName: Modify register
     description: |
-      Add a new entry to the given register or apply a batch edit operation.
+      Add a new entry to the given register or apply a batch edit operation updating/adding multiple items. 
+      <p>With no parameters then the operation adds the item in the payload to the register. With the <code>edit</code> parameter set then the payload can include multiple items to add or update.</p>
     securedBy: [basic]
     queryParameters:
       edit:
@@ -240,3 +241,26 @@ securitySchemes:
       Update an entry in a register to change some of the properties by
       uploading a partial entity description.
     securedBy: [basic]
+/_:{register}:
+  post:
+    displayName: Set status of register
+    description: |
+      Sets the status of the register. Must both set the <code>update</code> parameter and supply the <code>status</code> value to assign. No payload is required.</p>
+    securedBy: [basic]
+    queryParameters:
+      update:
+        required: true
+        type: boolean
+        displayName: Update register status
+        description: Update the status of the register, you must set the status parameter to the desired status.
+      status:
+        required: false
+        type: string
+        displayName: Status to set
+        description: Status to set for the register
+        type: string
+        enum:
+          - experimental
+          - stable
+          - retired
+          - invalid
