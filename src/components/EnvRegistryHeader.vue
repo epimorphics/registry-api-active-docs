@@ -6,8 +6,8 @@
           <h1 class='c-env-registry-header--menu-item'>Environment Registry</h1>
 
           <el-menu theme="dark" :default-active="activeIndex"mode="horizontal" class='c-env-registry-header--menu-item'>
-            <el-menu-item index="1"><a href=''>Browse</a></el-menu-item>
-            <el-menu-item index="2"><a href=''>About</a></el-menu-item>
+            <el-menu-item index="1"><a href='/registry/?_browse=true'>Browse</a></el-menu-item>
+            <el-menu-item index="2"><a href='/registry/ui/about'>About</a></el-menu-item>
             <el-submenu index="3">
               <template slot="title">Advanced</template>
               <el-menu-item index="3-1"><a href='/registry/ui/login?return=https://environment-registry.epimorphics.net/registry/'>Login</a></el-menu-item>

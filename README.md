@@ -17,7 +17,7 @@ APIs.  We have not yet used the facilities in RAML and JSON-Schema to fully
 document the input and output document formats, the current state focuses on
 operations and their parameters.
 
-At the moment, the RAML lives in `static.api.raml`. In the future, we will
+At the moment, the RAML lives in `static/api.raml`. In the future, we will
 probably refactor this project to separate the core API sandbox features from
 the specifics of the given RAML spec, and the API livery used to top- and tail-
 the page.
