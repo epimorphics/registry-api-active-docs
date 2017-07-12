@@ -104,7 +104,7 @@ function withSubstitutions(uri, vars) {
   let substUri = uri;
 
   _.each(vars, (v, k) => {
-    substUri = substUri.replace(`:{${k}}`, v);
+    substUri = substUri.replace(`{${k}}`, v);
   });
 
   return substUri;

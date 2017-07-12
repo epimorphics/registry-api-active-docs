@@ -106,7 +106,7 @@ securitySchemes:
     securedBy: [basic]
 
 
-/:{register}/:{entity}:
+/{register}/{entity}:
   get:
     displayName: Fetch a single entry
     description: |
@@ -130,7 +130,7 @@ securitySchemes:
         displayName: Optionally return metadata
         description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
 
-/:{register}:
+/{register}:
   get:
     displayName: List a named register
     description: |
@@ -220,7 +220,7 @@ securitySchemes:
   post:
     displayName: Modify register
     description: |
-      Add a new entry to the given register or apply a batch edit operation updating/adding multiple items. 
+      Add a new entry to the given register or apply a batch edit operation updating/adding multiple items.
       <p>With no parameters then the operation adds the item in the payload to the register. With the <code>edit</code> parameter set then the payload can include multiple items to add or update.</p>
     securedBy: [basic]
     queryParameters:
@@ -241,7 +241,7 @@ securitySchemes:
       Update an entry in a register to change some of the properties by
       uploading a partial entity description.
     securedBy: [basic]
-/_:{register}:
+/_{register}:
   post:
     displayName: Set status of register
     description: |
