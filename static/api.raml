@@ -218,25 +218,25 @@ securitySchemes:
         body:
           application/json:
   post:
-    displayName: Add a new entry to a registry
+    displayName: Add a new entry to a register
     description: |
-      Add a new entry to the given register.
+      Add a new entry to the given register or apply a batch edit operation.
     securedBy: [basic]
     queryParameters:
       edit:
         required: false
         type: boolean
-        displayName: Update multiple entries at once (the <code>'edit'</code> operation, requires CSV)
+        displayName: Update multiple entries at once (the <code>'edit'</code> operation)
         description: Add or update multiple entries, and their status, in one operation
   put:
-    displayName: Replace an entry in a registry
+    displayName: Replace an entry in a register
     description: |
-      Update an entry in a registry by replacing the current definition of the
+      Update an entry in a register by replacing the current definition of the
       entry by a new definition.
     securedBy: [basic]
   patch:
-    displayName: Update an entry in a registry
+    displayName: Update an entry in a register
     description: |
-      Update an entry in a registry to change some of the properties by
+      Update an entry in a register to change some of the properties by
       uploading a partial entity description.
     securedBy: [basic]
