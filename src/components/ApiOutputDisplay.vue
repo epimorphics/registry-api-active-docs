@@ -70,6 +70,7 @@
   .c-api-output-display {
     .CodeMirror {
       border: 1px solid $el-border-grey;
+      height: auto;
     }
   }
 

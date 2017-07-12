@@ -99,7 +99,8 @@
   @import '../styles/_common.scss';
 
   .c-payload-editor--codemirror .CodeMirror {
-    max-height: 100px;
+    min-height: 50px;
     border: 1px solid $el-border-grey;
+    height: auto;
   }
 </style>
