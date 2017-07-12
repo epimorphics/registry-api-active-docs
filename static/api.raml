@@ -17,9 +17,6 @@ securitySchemes:
     description: |
       Returns a description of the top-level of the register
       that is used for testing and training purposes.
-      <p>Please note that the contents of this test register <strong>are
-      not permanent</strong>, and <strong>may be reset</strong> at
-      regular intervals.</p>
     queryParameters:
       non-member-properties:
         required: false
@@ -106,9 +103,6 @@ securitySchemes:
     displayName: Create a new register
     description: |
       Register a new register in the root register used for testing and training.
-      <p>Please note that the contents of this test register <strong>are
-      not permanent</strong>, and <strong>may be reset</strong> at
-      regular intervals.</p>
     securedBy: [basic]
 
 
@@ -142,9 +136,6 @@ securitySchemes:
     description: |
       Returns a description of the named register within
       the root register that is used for testing and training purposes.
-      <p>Please note that the contents of this test register <strong>are
-      not permanent</strong>, and <strong>may be reset</strong> at
-      regular intervals.</p>
     queryParameters:
       non-member-properties:
         required: false
@@ -230,9 +221,6 @@ securitySchemes:
     displayName: Add a new entry to a registry
     description: |
       Add a new entry to the given register.
-      <p>Please note that the contents of this test register <strong>are
-      not permanent</strong>, and <strong>may be reset</strong> at
-      regular intervals.</p>
     securedBy: [basic]
     queryParameters:
       edit:
@@ -245,16 +233,10 @@ securitySchemes:
     description: |
       Update an entry in a registry by replacing the current definition of the
       entry by a new definition.
-      <p>Please note that the contents of this test register <strong>are
-      not permanent</strong>, and <strong>may be reset</strong> at
-      regular intervals.</p>
     securedBy: [basic]
   patch:
     displayName: Update an entry in a registry
     description: |
       Update an entry in a registry to change some of the properties by
       uploading a partial entity description.
-      <p>Please note that the contents of this test register <strong>are
-      not permanent</strong>, and <strong>may be reset</strong> at
-      regular intervals.</p>
     securedBy: [basic]

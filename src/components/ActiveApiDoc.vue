@@ -4,11 +4,14 @@
     <el-row>
       <el-col :sm='{span: 24, offset: 0}' :md='{span: 18, offset: 0}' :lg='{span: 16, offset: 2}'>
         <h2>Environment Registry API: try-out area</h2>
-        <p>
+        <p>          
           The environment registry manages collections of controlled terms and codelists
           for the Defra family of organizations. Read more
           <a href='/registry/ui/api-documentation'>about the API</a>, or try out
           sample API calls below.
+        </p>
+        <p>
+          Please note that these samples all operate on a test register on the training instance of the registry. The contents of this test register are <strong>not permanent</strong> and are reset nightly.
         </p>
       </el-col>
     </el-row>
