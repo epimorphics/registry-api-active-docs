@@ -1,22 +1,22 @@
 <template>
-  <el-input v-model='value' size='small' v-on:change='onChange' class='c-segment-variable-editor'>
-    <template slot='prepend'><code>{{ segment }} = </code></template>
+  <el-input v-model='value' size='small' v-on:change='onChange' class='c-url-parameter-editor'>
+    <template slot='prepend'><code>{{ urlParameter }} = </code></template>
   </el-input>
 </template>
 
 <script>
-  import { SET_API_SEGMENT_VARIABLE } from '@/store/mutation-types';
+  import { SET_URL_PARAMETER } from '@/store/mutation-types';
 
   export default {
     data: () => ({
       value: '',
     }),
     props: [
-      'segment',
+      'urlParameter',
     ],
     methods: {
       onChange(value) {
-        this.$store.commit(SET_API_SEGMENT_VARIABLE, { [this.segment]: value });
+        this.$store.commit(SET_URL_PARAMETER, { [this.urlParameter]: value });
       },
     },
   };
@@ -25,7 +25,7 @@
 <style lang='scss'>
   @import "../styles/_common.scss";
 
-  .c-segment-variable-editor {
+  .c-url-parameter-editor {
     margin-bottom: 10px;
 
     .el-input-group__prepend {

@@ -34,9 +34,9 @@ export default class ApiResource {
     return _.map(this.json.methods || [], m => new ApiMethod(m, this));
   }
 
-  /** @return {array} An array of zero or more segment variables in the URI */
-  apiSegmentVariables() {
-    const segments = this.json.relativeUriPathSegments;
-    return segments.map(segment => segment.replace(/:|\{|\}/g, ''));
+  /** @return {array} An array of zero or more parameters in the URL */
+  urlParameters() {
+    const uParams = this.json.relativeUriPathSegments;
+    return uParams.map(uParam => uParam.replace(/:|\{|\}/g, ''));
   }
 }

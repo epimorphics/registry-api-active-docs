@@ -71,13 +71,13 @@ export const mutations = {
   [types.CLEAR_API_RETURN_HEADERS](state) {
     state.apiReturnHeaders = '';
   },
-  /** Clear the segment variables map */
-  [types.CLEAR_API_SEGMENT_VARIABLES](state) {
-    state.apiSegmentVariables = {};
+  /** Clear the URL parameters map */
+  [types.CLEAR_URL_PARAMETERS](state) {
+    state.urlParameters = {};
   },
-  /** Set an API segment variable */
-  [types.SET_API_SEGMENT_VARIABLE](state, varValue) {
-    state.apiSegmentVariables = Object.assign({}, state.apiSegmentVariables, varValue);
+  /** Set a URL parameter */
+  [types.SET_URL_PARAMETER](state, varValue) {
+    state.urlParameters = Object.assign({}, state.urlParameters, varValue);
   },
 };
 
@@ -92,9 +92,9 @@ function asUrlParam(obj) {
 }
 
 /**
- * Return a version of the given string in which all `:{var}`
+ * Return a version of the given template string in which all `{var}`
  * sequences are replaced by any defined values in the table
- * of segment variables.
+ * of url parameters.
  *
  * @param {string} uri The URI to perform substitutions on
  * @param {object} vars The current value of any variables
@@ -114,7 +114,7 @@ export const getters = {
   /** @return The current API endpoint, assembled from the various pieces */
   apiEndpoint(store) {
     if (store.absoluteURI) {
-      const substitutedURI = withSubstitutions(store.absoluteURI, store.apiSegmentVariables);
+      const substitutedURI = withSubstitutions(store.absoluteURI, store.urlParameters);
       const queryParams = _.map(store.queryParams, asUrlParam).join('&');
       const queryPart = _.isEmpty(queryParams) ? '' : `?${queryParams}`;
 
@@ -143,7 +143,7 @@ export default new Vuex.Store({
     apiResult: null,
     apiPayload: null,
     apiReturnHeaders: null,
-    apiSegmentVariables: {},
+    urlParameters: {},
   },
   mutations,
   getters,

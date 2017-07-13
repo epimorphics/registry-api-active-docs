@@ -6,7 +6,7 @@ describe('store', () => {
       const mockStore = {
         absoluteURI: null,
         queryParams: [],
-        apiSegmentVariables: {},
+        urlParameters: {},
       };
       expect(getters.apiEndpoint(mockStore)).to.equal('');
     });
@@ -15,7 +15,7 @@ describe('store', () => {
       const mockStore = {
         absoluteURI: 'http://foo/bar',
         queryParams: [],
-        apiSegmentVariables: {},
+        urlParameters: {},
       };
       expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar');
     });
@@ -24,7 +24,7 @@ describe('store', () => {
       const mockStore = {
         absoluteURI: 'http://foo/bar/womble',
         queryParams: [{ marvin: 'android' }],
-        apiSegmentVariables: {},
+        urlParameters: {},
       };
 
       expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble?marvin=android');
@@ -34,27 +34,27 @@ describe('store', () => {
       const mockStore = {
         absoluteURI: 'http://foo/bar/womble',
         queryParams: [{ marvin: 'android' }, { life: 42 }],
-        apiSegmentVariables: {},
+        urlParameters: {},
       };
 
       expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble?marvin=android&life=42');
     });
 
-    it('should return the correct endpoint when given a segmented path with no subsitution', () => {
+    it('should return the correct endpoint when given a templated path with no subsitution', () => {
       const mockStore = {
-        absoluteURI: 'http://foo/bar/womble/:{segment}',
+        absoluteURI: 'http://foo/bar/womble/{urlParam}',
         queryParams: [],
-        apiSegmentVariables: {},
+        urlParameters: {},
       };
 
-      expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble/:{segment}');
+      expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble/{urlParam}');
     });
 
-    it('should return the correct endpoint when given a segmented path with a subsitution', () => {
+    it('should return the correct endpoint when given a templated path with a subsitution', () => {
       const mockStore = {
-        absoluteURI: 'http://foo/bar/womble/:{segment}',
+        absoluteURI: 'http://foo/bar/womble/{urlParam}',
         queryParams: [],
-        apiSegmentVariables: { segment: 'foobar' },
+        urlParameters: { urlParam: 'foobar' },
       };
 
       expect(getters.apiEndpoint(mockStore)).to.equal('http://foo/bar/womble/foobar');

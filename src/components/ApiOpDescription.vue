@@ -20,11 +20,11 @@
         </code>
       </span>
     </p>
-    <template v-if='pathSegments.length > 0'>
-      <ul class='c-url-segment-variables'>
-        <li><p>URL segment variables:</p></li>
-        <li v-for='segment in pathSegments' v-bind:key='`${operation.key()}-${segment}`'>
-          <segment-variable-editor v-bind:segment='segment'></segment-variable-editor>
+    <template v-if='urlParameters.length > 0'>
+      <ul class='c-url-parameters'>
+        <li><p>URL template parameters:</p></li>
+        <li v-for='urlParam in urlParameters' v-bind:key='`${operation.key()}-${urlParam}`'>
+          <url-parameter-editor v-bind:urlParameter='urlParam'></url-parameter-editor>
         </li>
       </ul>
     </template>
@@ -50,7 +50,7 @@
 <script>
   import ApiParameter from './ApiParameter';
   import ApiResultsViewer from './ApiResultsViewer';
-  import SegmentVariableEditor from './SegmentVariableEditor';
+  import UrlParameterEditor from './UrlParameterEditor';
 
   export default {
     computed: {
@@ -60,14 +60,14 @@
       computedURI() {
         return this.$store.getters.apiEndpoint;
       },
-      pathSegments() {
-        return this.$store.state.currentOperation.resource().apiSegmentVariables();
+      urlParameters() {
+        return this.$store.state.currentOperation.resource().urlParameters();
       },
     },
     components: {
       'api-parameter': ApiParameter,
       'api-results-viewer': ApiResultsViewer,
-      'segment-variable-editor': SegmentVariableEditor,
+      'url-parameter-editor': UrlParameterEditor,
     },
   };
 </script>
@@ -89,7 +89,7 @@
     }
   }
 
-  .c-url-segment-variables {
+  .c-url-parameters {
     list-style: none;
   }
 </style>

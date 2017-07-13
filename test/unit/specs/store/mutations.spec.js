@@ -15,8 +15,8 @@ const {
   CLEAR_API_PAYLOAD,
   SET_API_RETURN_HEADERS,
   CLEAR_API_RETURN_HEADERS,
-  CLEAR_API_SEGMENT_VARIABLES,
-  SET_API_SEGMENT_VARIABLE,
+  CLEAR_URL_PARAMETERS,
+  SET_URL_PARAMETER,
 } = mutations;
 
 describe('mutations', () => {
@@ -129,17 +129,17 @@ describe('mutations', () => {
     expect(mockState.apiReturnHeaders).to.equal('');
   });
 
-  it('should clear the API segment variables when requested', () => {
-    const mockState = { apiSegmentVariables: { foo: 'bar' } };
-    CLEAR_API_SEGMENT_VARIABLES(mockState);
+  it('should clear the URL parameters when requested', () => {
+    const mockState = { urlParameters: { foo: 'bar' } };
+    CLEAR_URL_PARAMETERS(mockState);
 
-    expect(mockState.apiSegmentVariables).to.deep.equal({});
+    expect(mockState.urlParameters).to.deep.equal({});
   });
 
-  it('should set an API segment variable when requested', () => {
-    const mockState = { apiSegmentVariables: { foo: '42' } };
-    SET_API_SEGMENT_VARIABLE(mockState, { foo: 'bar' });
+  it('should set an URL parameter when requested', () => {
+    const mockState = { urlParameters: { foo: '42' } };
+    SET_URL_PARAMETER(mockState, { foo: 'bar' });
 
-    expect(mockState.apiSegmentVariables).to.deep.equal({ foo: 'bar' });
+    expect(mockState.urlParameters).to.deep.equal({ foo: 'bar' });
   });
 });

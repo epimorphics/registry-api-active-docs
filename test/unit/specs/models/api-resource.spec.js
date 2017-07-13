@@ -31,17 +31,17 @@ describe('ApiResource', () => {
     });
   });
 
-  describe('#segmentVariables()', () => {
-    it('should return an empty array if no segment variables appear in the URL', () => {
+  describe('#urlParameters()', () => {
+    it('should return an empty array if no URL parameters appear in the URL', () => {
       const resources = API_FIXTURE.resources.map(r => new ApiResource(r));
       const resource = resources[0];
 
-      expect(resource.apiSegmentVariables()).to.deep.equal([]);
+      expect(resource.urlParameters()).to.deep.equal([]);
     });
-    it('should return an array of segment variables in the URL', () => {
+    it('should return an array of parameters in the URL', () => {
       const resources = API_FIXTURE.resources.map(r => new ApiResource(r));
       const resource = resources[1];
-      expect(resource.apiSegmentVariables()).to.deep.equal(['version']);
+      expect(resource.urlParameters()).to.deep.equal(['version']);
     });
   });
 });
