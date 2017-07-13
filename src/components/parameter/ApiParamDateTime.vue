@@ -23,6 +23,11 @@
         const d = this.value;
         return d && moment(d).toISOString();
       },
+
+      /** Parse string values to numbers */
+      parseValue(value) {
+        return new Date(value);
+      },
     },
     mounted() {
       this.checkDefaultValue();
