@@ -293,8 +293,8 @@ const API_FIXTURE =
           }
         }
       },
-      "relativeUri": "/:{version}",
-      "displayName": "/:{version}",
+      "relativeUri": "/{version}",
+      "displayName": "/{version}",
       "__METADATA__": {
         "primitiveValuesMeta": {
           "displayName": {
@@ -303,9 +303,9 @@ const API_FIXTURE =
         }
       },
       "relativeUriPathSegments": [
-        ":{version}"
+        "{version}"
       ],
-      "absoluteUri": "http://environment-registry.epimorphics.net/registry/def/test-area/:{version}"
+      "absoluteUri": "http://environment-registry.epimorphics.net/registry/def/test-area/{version}"
     }
   ]
 };

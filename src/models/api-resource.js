@@ -37,6 +37,6 @@ export default class ApiResource {
   /** @return {array} An array of zero or more parameters in the URL */
   urlParameters() {
     const uParams = this.json.relativeUriPathSegments;
-    return uParams.map(uParam => uParam.replace(/:|\{|\}/g, ''));
+    return uParams.map(uParam => uParam.replace(/(^_)|\{|\}/g, ''));
   }
 }

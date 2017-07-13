@@ -43,5 +43,13 @@ describe('ApiResource', () => {
       const resource = resources[1];
       expect(resource.urlParameters()).to.deep.equal(['version']);
     });
+    it('should correct a mis-parsed URL parameter', () => {
+      const r = new ApiResource({ relativeUriPathSegments: ['_{version}'] });
+      expect(r.urlParameters()).to.deep.equal(['version']);
+    });
+    it('should not correct a URL parameter with an underscore elsewhere', () => {
+      const r = new ApiResource({ relativeUriPathSegments: ['_{version_1}'] });
+      expect(r.urlParameters()).to.deep.equal(['version_1']);
+    });
   });
 });
