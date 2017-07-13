@@ -129,6 +129,18 @@ securitySchemes:
           - with_metadata
         displayName: Optionally return metadata
         description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
+  put:
+    displayName: Replace an entry in a register
+    description: |
+      Update an entry in a register by replacing the current definition of the
+      entry by a new definition.
+    securedBy: [basic]
+  patch:
+    displayName: Update an entry in a register
+    description: |
+      Update an entry in a register to change some of the properties by
+      uploading a partial entity description.
+    securedBy: [basic]
 
 /{register}:
   get:
@@ -168,7 +180,7 @@ securitySchemes:
           - version_list
         displayName: View of the data
         description: Specifies a named view or subset of the data, e.g. 'with_metadata' or 'version_list'
-      versionAt:
+      _versionAt:
         required: false
         type: datetime-only
         displayName: Version at
@@ -229,18 +241,7 @@ securitySchemes:
         type: boolean
         displayName: Update multiple entries at once (the <code>'edit'</code> operation)
         description: Add or update multiple entries, and their status, in one operation
-  put:
-    displayName: Replace an entry in a register
-    description: |
-      Update an entry in a register by replacing the current definition of the
-      entry by a new definition.
-    securedBy: [basic]
-  patch:
-    displayName: Update an entry in a register
-    description: |
-      Update an entry in a register to change some of the properties by
-      uploading a partial entity description.
-    securedBy: [basic]
+
 /_{register}:
   post:
     displayName: Set status of register
@@ -258,6 +259,30 @@ securitySchemes:
         type: string
         displayName: Status to set
         description: Status to set for the register
+        type: string
+        enum:
+          - experimental
+          - stable
+          - retired
+          - invalid
+
+/{register}/_{item}:
+  post:
+    displayName: Set status of an item
+    description: |
+      Sets the status of an item. Must both set the <code>update</code> parameter and supply the <code>status</code> value to assign. No payload is required.</p>
+    securedBy: [basic]
+    queryParameters:
+      update:
+        required: true
+        type: boolean
+        displayName: Update item status
+        description: Update the status of the item, you must set the status parameter to the desired status.
+      status:
+        required: false
+        type: string
+        displayName: Status to set
+        description: Status to set for the item
         type: string
         enum:
           - experimental
