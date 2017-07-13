@@ -68,14 +68,11 @@
       ZeroClipboard.config({
         swfPath: 'static/ZeroClipboard.swf',
         moviePath: 'static/ZeroClipboard.swf',
-        debug: true,
       });
 
       const zcClient = new ZeroClipboard(document.getElementById('copy-button'));
       zcClient.on('ready', () => {
-        console.log('zc client ready');
         zcClient.on('copy', () => {
-          console.log('zc client copy');
           ZeroClipboard.setData('text/plain', this.computedURI);
         });
       });
