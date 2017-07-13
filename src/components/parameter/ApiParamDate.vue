@@ -23,6 +23,11 @@
         const d = this.value;
         return d && moment(d).format('YYYY-MM-DD');
       },
+
+      /** Parse string values to numbers */
+      parseValue(value) {
+        return new Date(value);
+      },
     },
     mounted() {
       this.checkDefaultValue();
