@@ -18,6 +18,19 @@
       onChange(value) {
         this.$store.commit(SET_URL_PARAMETER, { [this.urlParameter]: value });
       },
+
+      /** Check to see if this param has a default value, and select it if so */
+      checkDefaultValue() {
+        const defaultValue = this.$route.query[this.urlParameter];
+
+        if (defaultValue) {
+          this.value = defaultValue;
+          this.onChange(defaultValue);
+        }
+      },
+    },
+    mounted() {
+      this.checkDefaultValue();
     },
   };
 </script>
