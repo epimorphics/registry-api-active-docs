@@ -39,10 +39,11 @@
     background-color: $yellow;
 
     &:before {
-      content: '\f105';
+      content: '>';
       color: white;
-      font-family: FontAwesome;
-      font-size: 30px;
+      font-family: Arial, sans-serif;
+      font-size: 25px;
+      font-weight: bold;
       top: 50%;
       left: 0;
       position: absolute;
