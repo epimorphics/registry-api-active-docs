@@ -11,7 +11,7 @@
           sample API calls below.
         </p>
         <p>
-          Please note that these samples all operate on a test register on the training instance of the registry. The contents of this test register are <strong>not permanent</strong> and are reset nightly.
+          Please note that these samples all operate on a <a href="http://environment-registry.epimorphics.net/registry/def/_test">test register</a> on the training instance of the registry. The contents of this test register are <strong>not permanent</strong> and are reset nightly.
         </p>
       </el-col>
     </el-row>
