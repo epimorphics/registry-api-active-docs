@@ -89,10 +89,15 @@
     }
   }
 
+  .el-radio-button__inner {
+    padding: 6px 15px;
+  }
+
   .el-radio-button__orig-radio:checked+.el-radio-button__inner {
     color: $white;
     background-color: $yellow;
     border-color: darken($yellow, 20%);
     box-shadow: -1px 0 0 0 darken($yellow, 20%);
   }
+
 </style>

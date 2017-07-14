@@ -93,7 +93,7 @@
     margin-top: 0;
 
     li {
-      line-height: 2.5em;
+      line-height: 35px;
     }
   }
 

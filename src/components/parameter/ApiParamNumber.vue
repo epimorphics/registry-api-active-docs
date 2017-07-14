@@ -34,8 +34,14 @@
   };
 </script>
 
-<style lang='scss' scoped>
-  .c-api-param--number > .el-input-number {
-    vertical-align: middle !important;
+<style lang='scss'>
+  .c-api-param--number {
+    >.el-input-number {
+      vertical-align: middle !important;
+    }
+
+    .el-input-number__decrease, .el-input-number__increase {
+      top: 3px;
+    }
   }
 </style>
