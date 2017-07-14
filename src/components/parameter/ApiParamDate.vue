@@ -12,7 +12,7 @@
   export default {
     data: () => ({
       checked: false,
-      value: null,
+      value: new Date(),
     }),
     props: [
       'apiParam',
