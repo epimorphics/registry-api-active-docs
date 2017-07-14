@@ -42,8 +42,8 @@
     </el-row>
     <api-results-viewer></api-results-viewer>
   </section>
-  <section class='c-api-operation-description no-selection' v-else>
-    <p>Please choose an API operation</p>
+  <section class='c-api-op-description no-selection' v-else>
+    <p>Please choose an example API operation</p>
   </section>
 </template>
 
@@ -76,6 +76,14 @@
   @import "../styles/_common.scss";
 
    .c-api-op-description {
+     margin-left: 15px;
+
+     &.no-selection {
+        font-style: italic;
+        color: $grey-1;
+        margin-top: 2em;
+     }
+
      h3 {
        margin: 20px 0 0 0;
      }

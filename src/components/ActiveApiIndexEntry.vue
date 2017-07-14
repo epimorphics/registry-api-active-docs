@@ -42,9 +42,9 @@
       content: '>';
       color: white;
       font-family: Arial, sans-serif;
-      font-size: 25px;
+      font-size: 15px;
       font-weight: bold;
-      top: 50%;
+      top: 65%;
       left: 0;
       position: absolute;
       margin-top: -15px;

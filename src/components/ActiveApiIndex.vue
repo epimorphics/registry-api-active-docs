@@ -96,6 +96,7 @@
       font-size: 17px;
       margin: 0;
       padding: 4px;
+      text-align: center;
     }
 
     &--list {
