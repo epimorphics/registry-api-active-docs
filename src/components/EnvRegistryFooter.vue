@@ -52,14 +52,14 @@
 
     border-top: 15px solid $department-for-environment-food-rural-affairs;
     margin-top: 10px;
-    
+
     a, a:hover {
-      color: $white;
+      color: $black;
       text-decoration: underline;
     }
 
     .c-footer-epimorphics {
-      color: lighten( $semi-black, 20% );
+      color: $semi-black;
 
       a, a:hover {
         color: inherit;

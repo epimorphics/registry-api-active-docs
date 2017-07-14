@@ -32,11 +32,11 @@
     <el-row>
       <ul class='c-api-parameters-list u-list-unstyled'>
         <template v-for='apiParam in operation.apiParameters()'>
-          <el-col :sm='24' :md='12'>
-            <li>
+          <li>
+            <el-col :sm='24' :md='12'>
               <api-parameter v-bind:apiParam='apiParam'></api-parameter>
-            </li>
-          </el-col>
+            </el-col>
+          </li>
         </template>
       </ul>
     </el-row>
